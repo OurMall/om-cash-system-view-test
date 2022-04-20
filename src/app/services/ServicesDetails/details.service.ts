@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { Details } from 'src/app/models/details';
 
 @Injectable({
@@ -10,20 +10,21 @@ export class DetailsService {
 
   url: string = "https://localhost:44397/api/product";
 
-  private details$: BehaviorSubject<Details[]> = new BehaviorSubject<Details[]>([]);
-  detilsObservable$ = this.details$.asObservable()
+  private details$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  detailsObservable$: Observable<any[]> = this.details$.asObservable()
   
   constructor(
     private _http: HttpClient
   ) { }
 
-
-
-  getDetail(): Observable<Details> {
-      return this._http.get<Details>(this.url).pipe(
+  getDetail(): Observable<any> {
+      return this._http.get<any>(this.url).pipe(
         tap((response) => {
-          console.log(response)
-          this.details$.next(response.Product)
+          this.details$.next(response)
+        }),
+        catchError((err: HttpErrorResponse) => {
+          console.log(err);
+          return throwError(() => err);
         })
       );
   }
