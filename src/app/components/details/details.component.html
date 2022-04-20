@@ -1,8 +1,8 @@
-<!--<div *ngFor="let element of list">
-    {{ element.name }}
-</div>-->
+<div *ngFor="let element of list">
+    {{ element.Name }}
+</div>
 
-<!--<div>
+<div>
     <table mat-table [dataSource]="list" class="mat-elevation-z4">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>#</th>
@@ -11,6 +11,4 @@
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let row; columns: columns"></tr>
     </table>
-</div>-->
-<p>{{details$ | async}}</p>
-<!--<div *ngFor="let detail of details$ |async | json" ></div>-->
+</div>

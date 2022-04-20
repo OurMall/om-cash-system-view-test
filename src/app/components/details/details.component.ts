@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Details } from 'src/app/models/details';
+import { Product } from 'src/app/models/product';
 import { DetailsService } from 'src/app/services/ServicesDetails/details.service';
+import { callbackify } from 'util';
 
 @Component({
   selector: 'app-details',
@@ -10,21 +11,19 @@ import { DetailsService } from 'src/app/services/ServicesDetails/details.service
 })
 export class DetailsComponent implements OnInit {
 
-  public list!: any[];
-  //public columns: string[] = ['name']
-  public details$!: Observable<Details[]>;
+  public list!: Product[];
+  public columns: string[] = ['name']
   constructor(
     private apiDetails: DetailsService
   ) { }
 
   ngOnInit(): void {
-    this.details$ = this.apiDetails.detilsObservable$;
+    this.getDetails();
   }
 
   getDetails() {
     this.apiDetails.getDetail().subscribe( details => {
       console.log(details)
-      this.list = details.Product;
     })
   }
 }
