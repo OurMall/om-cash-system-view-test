@@ -11,9 +11,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
-
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,9 +24,10 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
+    AppRoutingModule,
     MatTableModule
   ],
   providers: [],
