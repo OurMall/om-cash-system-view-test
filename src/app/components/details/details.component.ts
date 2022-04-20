@@ -26,5 +26,12 @@ export class DetailsComponent implements OnInit {
         console.log(res);
       }
     )
+    const Precios = document.querySelector("Total")
+
+    console.log(Precios)
   }
+
+  
 }
+
+
