@@ -5,7 +5,7 @@ import { MainComponent } from './components/main/main.component';
 import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/invoice', pathMatch:'full'},
+  { path: '', redirectTo: '', pathMatch:'full'},
   { path: 'invoice', component: MainComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'details', component: DetailsComponent }

@@ -1,28 +1,8 @@
-<form>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text bg-white">
-                    <i class="fa-solid fa-barcode"></i>
-                </div>
-            </div>
-            <input type="text" class="form-control" placeholder="Código del producto">
-        </div> 
+<div class="form-style-6">
+    <h1 class="title">Registrer Product</h1>
+    <form>
+    <input type="text"  class="input-form" placeholder="Codigo del producto" />
+    <input type="text"  class="input-form"placeholder="Cantidad" />
+    <input type="submit" value="Send" />
+    </form>
     </div>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text bg-white">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
-            <input type="text" class="form-control" placeholder="Cantidad">
-        </div> 
-    </div>
-    <div class="form-grup"> 
-        <button class="btn btn-success btn-lg-btn-block" type="submit">Registrar</button>
-    </div>
-</form>
-<div *ngFor="let elem of lst">
-    {{elem.total_price}}
-</div>

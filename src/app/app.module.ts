@@ -11,6 +11,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
 
@@ -22,7 +23,8 @@ import { MatTableModule } from '@angular/material/table';
     ProductsComponent,
     FooterComponent,
     MainComponent,
-    DetailsComponent
+    DetailsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
