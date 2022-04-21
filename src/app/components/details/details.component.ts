@@ -11,20 +11,25 @@ import { DetailsService } from 'src/app/services/ServicesDetails/details.service
 export class DetailsComponent implements OnInit {
 
   public list!: any[];
-  //public columns: string[] = ['name']
-  public details$!: Observable<Details[]>;
+  public columns: string[] = ['name']
+  details$: Observable<any[]> = this.apiDetails.detailsObservable$;
+
   constructor(
     private apiDetails: DetailsService
   ) { }
 
   ngOnInit(): void {
-    this.details$ = this.apiDetails.detilsObservable$;
+    this.apiDetails.getDetail().subscribe(
+      res => {
+        console.log(res);
+      }
+    )
+    const Precios = document.querySelector("Total")
+
+    console.log(Precios)
   }
 
-  getDetails() {
-    this.apiDetails.getDetail().subscribe( details => {
-      console.log(details)
-      this.list = details.Product;
-    })
-  }
+  
 }
+
+
