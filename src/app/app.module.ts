@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavsliderComponent } from './shared/navslider/navslider.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RouterModule } from '@angular/router';
     ProductsComponent,
     FooterComponent,
     MainComponent,
-    DetailsComponent
+    DetailsComponent,
+    NavbarComponent,
+    NavsliderComponent
   ],
   imports: [
     BrowserModule,
