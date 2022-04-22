@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
 } 
 nav{
   display: flex;
-  height: 60px;
+  height: 80px;
   width: 100%;
   background: #1b1b1b;
   align-items: center;
@@ -49,9 +49,9 @@ nav .menu-btn i{
   cursor: pointer;
   display: none;
 }
-
-
-
+input[type="checkbox"]{
+  display: none;
+}
 @media (max-width: 1000px){
   nav{
     padding: 0 40px 0 50px;
@@ -59,13 +59,11 @@ nav .menu-btn i{
 }
 @media (max-width: 920px) {
   nav .menu-btn i{
-    float: right;
     display: block;
   }
   #click:checked ~ .menu-btn i:before{
     content: "\f00d";
   }
-  
   nav ul{
     position: fixed;
     top: 80px;
@@ -97,7 +95,7 @@ nav .menu-btn i{
   nav ul li a.active,
   nav ul li a:hover{
     background: none;
-    color: cyan;
+    color: rgb(255, 17, 0);
   }
 }
 .content{
@@ -115,4 +113,3 @@ nav .menu-btn i{
   font-size: 40px;
   font-weight: 700;
 }
-
