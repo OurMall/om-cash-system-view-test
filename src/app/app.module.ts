@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavsliderComponent } from './shared/navslider/navslider.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     FooterComponent,
     MainComponent,
     DetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    NavsliderComponent
   ],
   imports: [
     BrowserModule,

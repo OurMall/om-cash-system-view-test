@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch:'full'},
   { path: 'invoice', component: MainComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'details', component: DetailsComponent }
+  { path: 'details', component: DetailsComponent },
+  { path: 'home-caja', loadChildren: () => import('./modules/home-caja/home-caja.module').then(m => m.HomeCajaModule) }
 ];
 
 @NgModule({
