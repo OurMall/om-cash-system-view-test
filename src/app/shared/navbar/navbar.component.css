@@ -14,6 +14,7 @@ nav{
   justify-content: space-between;
   padding: 0 50px 0 100px;
   flex-wrap: wrap;
+  z-index: 1000;
 }
 nav .logo{
   color: #fff;
@@ -74,6 +75,7 @@ input[type="checkbox"]{
     text-align: center;
     display: block;
     transition: all 0.3s ease;
+    z-index: 1000;
   }
   #click:checked ~ ul{
     left: 0;

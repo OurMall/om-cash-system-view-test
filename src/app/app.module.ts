@@ -14,6 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NavsliderComponent } from './shared/navslider/navslider.component';
+import { CardBoxComponent } from './components/card-box/card-box.component';
+import {CardModule} from 'primeng/card';
+import { TablesComponent } from './components/tables/tables.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { NavsliderComponent } from './shared/navslider/navslider.component';
     MainComponent,
     DetailsComponent,
     NavbarComponent,
-    NavsliderComponent
+    NavsliderComponent,
+    CardBoxComponent,
+    TablesComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { NavsliderComponent } from './shared/navslider/navslider.component';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
