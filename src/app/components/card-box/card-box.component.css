@@ -1,0 +1,80 @@
+.card{
+	font: 95% Arial, Helvetica, sans-serif;
+	width: 500px;
+    min-width: 500px;
+	padding: 16px;
+    float: left;
+	background: #F7F7F7;
+    margin: 30px 0 0 150px;
+}
+.title{
+	background: #000000;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+.card input[type="text"],
+.card input[type="date"],
+.card input[type="datetime"],
+.card input[type="email"],
+.card input[type="number"],
+.card input[type="search"],
+.card input[type="time"],
+.card input[type="url"],
+.card textarea,
+.card select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.card input[type="text"]:focus,
+.card input[type="date"]:focus,
+.card input[type="datetime"]:focus,
+.card input[type="email"]:focus,
+.card input[type="number"]:focus,
+.card input[type="search"]:focus,
+.card input[type="time"]:focus,
+.card input[type="url"]:focus,
+.card textarea:focus,
+.card select:focus
+{
+	box-shadow: 0 0 5px #000000;
+	padding: 3%;
+	border: 1px solid #000000;
+}
+ input[type="submit"], input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #1b1b1b;
+	border-bottom: 2px solid #020146;
+    border-radius: .5rem;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+    
+} input[type="submit"]:hover, input[type="button"]:hover{
+	background: #323233;
+}
+
+
+/* Table Styles */
+
