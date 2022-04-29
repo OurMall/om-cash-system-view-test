@@ -53,9 +53,10 @@ nav .menu-btn i{
 input[type="checkbox"]{
   display: none;
 }
-@media (max-width: 1000px){
-  nav{
-    padding: 0 40px 0 50px;
+@media (max-width: 1200px){
+
+  nav  {
+    padding:  0 90px 0 100px;;
   }
 }
 @media (max-width: 920px) {
@@ -114,4 +115,9 @@ input[type="checkbox"]{
 .content div{
   font-size: 40px;
   font-weight: 700;
+}
+
+@media (max-width: 480px){
+  
+  
 }
