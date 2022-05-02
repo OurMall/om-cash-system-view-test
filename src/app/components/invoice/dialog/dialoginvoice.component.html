@@ -1,0 +1,59 @@
+
+<h1 mat-dialog-title>Nueva Factura</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <input matInput [(ngModel)]="invoice1.id_client" placeholder="Cliente">
+    </mat-form-field>
+    <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
+        <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input type="text" formControlName="Code" matInput [(ngModel)]="codeProduct" placeholder="Código del producto">
+        </mat-form-field> 
+<!--
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" formControlName="Name" matInput placeholder="Nombre del producto">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input step="any" type="number" min="0" formControlName="Price" matInput placeholder="Precio del producto">
+        </mat-form-field>
+-->
+        <mat-form-field>
+            <mat-label>Cantidad</mat-label>
+            <input type="number" formControlName="Name"  matInput placeholder="Cantidad" min="0">
+        </mat-form-field>  
+    
+        <div>
+            <button type="submit"  (click)="addProductsToDetails()" mat-raised-button>+</button>
+        </div>
+        <div>
+            <h5>Detalles</h5>
+            <table style="width:100%">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr *ngFor="let item of products">
+                    <td>{{item.Code}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Price}}</td>
+                    <td>{{item.Quantity}}</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="closeDialog()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="addInvoices()">Guardar</button>
+    <button mat-raised-button color="primary" (click)="viewProduct()">Ver</button>
+</div>
+
+
+

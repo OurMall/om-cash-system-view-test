@@ -18,20 +18,5 @@
     <h1 class="de-name">{{ detail.name }}</h1>
 </div>-->
 
-<table *ngFor="let detail of details$ | async">
-    <tr>
-      <th>Codigo</th>
-      <th>Nombre</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Total</th >
-    </tr>
-    <tr>
-      <td> {{ detail.code }} </td> 
-      <td>{{ detail.name }}</td>
-      <td> {{detail.quantity }}</td>
-      <td> {{detail.price}} </td>
-      <td id="Total"> {{detail.price * detail.quantity }}</td>
-    </tr>
-  </table>
+
 

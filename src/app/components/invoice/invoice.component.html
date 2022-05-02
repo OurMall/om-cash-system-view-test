@@ -1,8 +1,87 @@
-<div class="form-style-6">
+<!--<div class="form-style-6">
     <h1 class="title">Registrer Product</h1>
     <form>
-    <input type="text"  class="input-form" placeholder="Codigo del producto" />
+    <input matInput [(ngModel)]="invoice1.id_client" placeholder="Cliente" [ngModelOptions]="{standalone: true}">
+    <input type="text"  class="input-form" placeholder="Codigo del producto" [(ngModel)]="codeProduct" name="codeProduct"/>
     <input type="text"  class="input-form2"placeholder="Cantidad" />
     <input type="submit" class="btn-pro" value="Send" />
     </form>
 </div>
+<div class="form-style-7">
+    <button mat-raised-button color="primary" (click)="openAdd()">Nuevo</button>
+    <button mat-raised-button color="primary" (click)="addProductsToDetails()">Agregar a la lista</button>
+    <button mat-raised-button color="primary" (click)="addInvoices()">Crear factura</button>
+</div>
+<table *ngFor="let detail of products">
+    <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th >
+    </tr>
+    <tr>
+        <td> {{ detail.Code }} </td> 
+        <td>{{ detail.Name }}</td>
+        <td> {{detail.Quantity }}</td>
+        <td> {{detail.Price}} </td>
+        <td id="Total"> {{detail.Price * detail.Quantity }}</td>
+    </tr>
+</table>-->
+<h1 mat-dialog-title>Nueva Factura</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <input matInput [(ngModel)]="invoice1.id_client" placeholder="Cliente">
+    </mat-form-field>
+    <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
+        <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input type="text" formControlName="Code" matInput [(ngModel)]="codeProduct" placeholder="Código del producto">
+        </mat-form-field> 
+<!--
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" formControlName="Name" matInput placeholder="Nombre del producto">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input step="any" type="number" min="0" formControlName="Price" matInput placeholder="Precio del producto">
+        </mat-form-field>
+-->
+        <mat-form-field>
+            <mat-label>Cantidad</mat-label>
+            <input type="number" formControlName="Quantity"  matInput placeholder="Cantidad" [(ngModel)]="quantity" min="0">
+        </mat-form-field>  
+    
+        <div>
+            <button type="submit" mat-raised-button>+</button>
+        </div>
+    </form>
+    <div>
+        <h5>Detalles</h5>
+        <table style="width:100%">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr *ngFor="let item of products">
+                <td>{{item.Code}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Quantity}}</td>
+                <td>{{item.Price * item.Quantity}}</td>
+            </tr>
+        </table>
+    </div>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="addInvoices()">Crear</button>
+    <button mat-raised-button color="primary" (click)="openAdd()">Nuevo</button>
+</div>
+
