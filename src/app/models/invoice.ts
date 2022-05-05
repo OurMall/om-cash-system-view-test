@@ -1,6 +1,8 @@
-import { Details } from "./details";
+import { Product } from "./product";
 
 export interface Invoice {
     id_client:String;
-    details: Details[];
+    details: Product[]; 
+    total_price: number;
+    payment_method: String;
 }

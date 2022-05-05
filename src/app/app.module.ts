@@ -10,14 +10,20 @@ import { MainComponent } from './components/main/main.component';
 import { DetailsComponent } from './components/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog'
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input'
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NavsliderComponent } from './shared/navslider/navslider.component';
 import { CardBoxComponent } from './components/card-box/card-box.component';
 import {CardModule} from 'primeng/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablesComponent } from './components/tables/tables.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,17 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     RouterModule,
     AppRoutingModule,
     MatTableModule,
-    CardModule
+    CardModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    MatSliderModule 
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Invoice } from '../../models/invoice';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +21,14 @@ export class InvoiceService {
 
   getInvoices(): Observable<Invoice> {
       return this._http.get<Invoice>(this.url);
+
+  
   }
 
+  postInvoices(invoice: Invoice): Observable<Invoice>{
+    return this._http.post<Invoice>(this.url, invoice, httpOptions)
+  } 
+
 }
+
+

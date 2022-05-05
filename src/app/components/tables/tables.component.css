@@ -46,7 +46,7 @@
 
 @media (max-width: 1200px){
   .table-wrapper{
-    width: 520px;
+    width: 550px;
     margin: 100px 50px 0 0;
   }
 
@@ -54,16 +54,25 @@
 
 @media (max-width: 768px){
   .table-wrapper {
-    width: 700px;
-    margin: 100px 35px 0 35px;
+    width: 680px;
+    margin: 80px 35px 0 35px;
   }
 }
 
 @media (max-width: 480px){
   .table-wrapper {
-    width: 50px;
+    width: 400px;
     margin: 50px 35px 0 0px;
   }
 }
+
+@media (max-width: 375px){
+  .table-wrapper {
+    width: 400px;
+    margin: 50px 35px 0 0px;
+  }
+}
+
+
 
 
