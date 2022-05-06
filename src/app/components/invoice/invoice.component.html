@@ -1,13 +1,13 @@
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-    <input type="text"  class="input-form"  matInput [(ngModel)]="codeProduct" formControlName="Code" placeholder="Codigo del producto"  >
-    <input type="number"  class="input-form2" matInput  [(ngModel)]="quantity" formControlName="Quantity" min="0" placeholder="Cantidad">
-    <button type="submit" class="btn-pro" value="Send" >Send</button>
+    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code"   f>
+    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" >
+    <button type="submit" class="btn-pro"  value="Send" >Send</button>
     </form>
     </div>
 
-    <div class="table-wrapper">
+    <div class="table-wrapper"> 
         <table class="fl-table">
             <thead>
             <tr>
@@ -19,16 +19,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of products">
-                <td>{{item.Code}}</td>
-                <td>{{item.Name}}</td>
-                <td>{{item.Price}}</td>
-                <td>{{item.Quantity}}</td>
-                <td>{{item.Price * item.Quantity}}</td>
-            </tr>
-        </tbody>
-        </table>
+                <tr *ngFor="let item of products">
+                    <td>{{item.Code}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Price}}</td>
+                    <td>{{item.Quantity}}</td>
+                    <td>{{item.Price * item.Quantity | currency}}</td>
+                </tr>
+            </tbody>
+            </table>
+            
     </div>
-    <div>
-        <button (click)="addInvoices()">Crear</button>
-    </div>        
+    <div class="total">
+        <h1 class="totali">Total a pagar es: {{total_price | currency}}</h1>
+    </div>
+

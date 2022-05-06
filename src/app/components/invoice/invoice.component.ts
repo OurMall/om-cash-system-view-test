@@ -55,42 +55,42 @@ export class InvoiceComponent implements OnInit {
   };
 
   addProductsToDetails() {
-    console.log("click")
     let product: Product = {
       Name: "",
       Price: 0.0,
       Code: "",
       Quantity: 0
     };
-    //this.products.push(this.detailsForm.value);
-    this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => {
-      const element = response[0];  
-      console.log(response,"data") 
-          product = {
-          Name: element.name,
-          Price: element.price,
-          Code: this.codeProduct,
-          Quantity: this.quantity
-        };
-        this.products.push(product);
-        //this.products = response; y se cambia el products.services por listas
-        console.log(this.products)
-    }));
 
-    /*
-    this.apiProduct.getProductsByAdi(this.codeProduct).pipe(
-      mergeMap(data => {
-        this.products = data;
-        data.forEach((current: any) => {
-          this.products.push(current);
-        });
-        return forkJoin(this.products);
-      })
-    ).subscribe((response:any) =>{
-      this.products = response;
-    });*/
-    
-};
+    if (this.codeProduct == null || undefined) {
+      this.snackBar.open("Por favor ingrese un código de producto")
+    } else if (this.quantity == null || undefined) {
+      this.snackBar.open("Por favor ingrese una cantidad para este producto")
+    } else {
+      this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => {
+        try {
+            const element = response[0];  
+            console.log(response,"data") 
+              product = {
+              Name: element.name,
+              Price: element.price,
+              Code: this.codeProduct,
+              Quantity: this.quantity,
+            };
+            this.products.push(product);
+            this.total_price = this.products.reduce((
+              acc,
+              obj,
+            ) => acc + (obj.Price * obj.Quantity), 0);
+            console.log(this.total_price);
+            console.log(this.products);
+          } catch (error) {
+            this.snackBar.open("No hay un producto con éste código");
+          };
+      }));
+    };
+  };
+
 
 objectKeys(object: any) {
   const keys = Object.keys(object);
