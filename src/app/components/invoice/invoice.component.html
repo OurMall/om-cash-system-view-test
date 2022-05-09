@@ -1,8 +1,8 @@
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code"   f>
-    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" >
+    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code" value="45345">
+    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" value="1">
     <button type="submit" class="btn-pro"  value="Send" >Send</button>
     </form>
     </div>
@@ -25,12 +25,14 @@
                     <td>{{item.Price}}</td>
                     <td>{{item.Quantity}}</td>
                     <td>{{item.Price * item.Quantity | currency}}</td>
+                    <td class="icons"><button class="delete" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash" ></i></button></td>
+
                 </tr>
             </tbody>
             </table>
             
     </div>
     <div class="total">
-        <h1 class="totali">Total a pagar es: {{total_price | currency}}</h1>
+        <h1 class="totali">Total a pagar: {{total_price | currency}}</h1>
     </div>
 

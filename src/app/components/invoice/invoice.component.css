@@ -196,11 +196,23 @@
 }
 
 .total {
-	float: right;
-	transform: translateY(439%) translateX(180%);
-	
+	margin: 500px 0 0 0 ;
 }
 
+.totali {
+	margin-right: 250px;
+	float: right;
+}
+
+.delete {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: none;
+	font-size: 1rem;
+	background-color: #ff1818;	
+	color: white;
+}
 
 
 

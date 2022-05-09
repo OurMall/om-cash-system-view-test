@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -32,6 +32,9 @@ export class InvoiceComponent implements OnInit {
     Code: ["", Validators.required],
     Quantity: [0, Validators.required]
 })
+
+@ViewChild('quantityDetails') 
+  public quantityDetails!: ElementRef;
 
   constructor(
       private apiInvoice: InvoiceService,
@@ -106,8 +109,46 @@ objectKeys(object: any) {
     });
 };
 
+UpdateQuantity(code: String) {
+  let index = this.products.findIndex(p => p.Code === code);
+  console.log(index);
+  let value = this.quantityDetails.nativeElement.value;
+  let quantity = parseInt(value);
+  console.log(quantity);
+  if (index > -1 && this.products[index].Quantity >= quantity) {
+    this.products[index].Quantity = quantity;
+    this.subtractPrices();
+  } else if (index > -1 && this.products[index].Quantity <= quantity) {
+    this.products[index].Quantity = quantity;
+    this.sumPrices();
+  };
+};
+
+deleteProductToDetails(code: String) {
+  let index = this.products.findIndex(p => p.Code === code);
+  if (index > -1 && confirm('¿Desea eliminar el producto?')) {
+    this.products.splice(index, 1);
+    this.subtractPrices();
+  }
+};
+
+sumPrices() {
+  this.total_price = this.products.reduce((
+    acc,
+    obj,
+  ) => acc + (obj.Price * obj.Quantity), 0);
+};
+
+subtractPrices() {
+  this.total_price = this.products.reduce((
+    acc,
+    obj,
+  ) => acc - (obj.Price * obj.Quantity) *-1 , 0  );
+};
+
+};
+
 
 
 
   
-}

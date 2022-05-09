@@ -25,6 +25,8 @@ import { TablesComponent } from './components/tables/tables.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { MatSliderModule } from '@angular/material/slider';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
