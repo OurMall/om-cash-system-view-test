@@ -1,8 +1,8 @@
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code" value="45345">
-    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" value="1">
+    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code" >
+    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0"  >
     <button type="submit" class="btn-pro"  value="Send" >Send</button>
     </form>
     </div>
@@ -15,7 +15,9 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
-                <th>Valor T</th>
+                <th>Subtotal</th>
+                <th>Eliminar</th>
+                <th>Actualizar</th>
             </tr>
             </thead>
             <tbody>
@@ -23,10 +25,10 @@
                     <td>{{item.Code}}</td>
                     <td>{{item.Name}}</td>
                     <td>{{item.Price}}</td>
-                    <td>{{item.Quantity}}</td>
+                    <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails ></td>
                     <td>{{item.Price * item.Quantity | currency}}</td>
                     <td class="icons"><button class="delete" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash" ></i></button></td>
-
+                    <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value)">Actualizar</button></td>
                 </tr>
             </tbody>
             </table>
@@ -35,4 +37,6 @@
     <div class="total">
         <h1 class="totali">Total a pagar: {{total_price | currency}}</h1>
     </div>
+    <button type="submit" (click)="openDialog()"></button>
+    <button type="submit" (click)="addInvoices()">Crear factura</button>
 

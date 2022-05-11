@@ -44,7 +44,7 @@ export class InvoiceComponent implements OnInit {
 
   ) { 
     this.products = [];
-    this.invoice1 = {id_client:this.id_client, details: [], total_price:this.total_price, payment_method: "C"};
+    this.invoice1 = {id_client:this.id_client, details: [], total_price:this.total_price, payment_method: "Nada"};
   };
   ngOnInit(): void {
     //this.getInvoices();
@@ -64,30 +64,37 @@ export class InvoiceComponent implements OnInit {
       Code: "",
       Quantity: 0
     };
-
+    // Valido que si se ingrese un código y en caso de que no se ingrese salta este mensaje
     if (this.codeProduct == null || undefined) {
-      this.snackBar.open("Por favor ingrese un código de producto")
+      this.snackBar.open("Por favor ingrese un código de producto") 
     } else if (this.quantity == null || undefined) {
-      this.snackBar.open("Por favor ingrese una cantidad para este producto")
+      this.snackBar.open("Por favor ingrese una cantidad para este producto") // Valido que si se ingrese una cantidad para poder registrar un producto
     } else {
-      this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => {
+      // Traigo el producto relacionado con el código que se ingresa
+      this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => { 
         try {
+            //  Asigno los valor que necesito del producto a la variable product que es de tipo Product
             const element = response[0];  
-            console.log(response,"data") 
               product = {
               Name: element.name,
               Price: element.price,
               Code: this.codeProduct,
-              Quantity: this.quantity,
+              Quantity: this.quantity
+              
             };
+
+            3
+            // Ingresa el producto a la lista
             this.products.push(product);
-            this.total_price = this.products.reduce((
-              acc,
-              obj,
-            ) => acc + (obj.Price * obj.Quantity), 0);
-            console.log(this.total_price);
+          
+            // Ingreso el producto al cual se le asignaron los valores
             console.log(this.products);
+
+            // Llamo a la función para que vaya sumando los valores y así optener el valor total de la factura
+            this.sumPrices();
           } catch (error) {
+            
+            // En caso de que no haya un producto con el código que se ingreso salta este mensaje
             this.snackBar.open("No hay un producto con éste código");
           };
       }));
@@ -100,55 +107,81 @@ objectKeys(object: any) {
   return keys;
 }
 
-  addInvoices() {
-    this.invoice1.details = this.products;
+addInvoices() {
+  this.invoice1.total_price = this.total_price;
+  this.invoice1.details = this.products;
+  if (this.products.length === 0) {
+    this.snackBar.open("Para crear la factura necesita minimo un productos");
+  } else {
     this.apiInvoice.postInvoices(this.invoice1).subscribe(response => {
-        this.snackBar.open('Factura creada', '', {
-            duration: 2000
-        })
-    });
+      this.snackBar.open('Factura creada', '', {
+          duration: 2000
+      })
+  });
 };
 
-UpdateQuantity(code: String) {
+}
+
+UpdateQuantity(code: String, quantity: string) {
   let index = this.products.findIndex(p => p.Code === code);
   console.log(index);
-  let value = this.quantityDetails.nativeElement.value;
-  let quantity = parseInt(value);
-  console.log(quantity);
-  if (index > -1 && this.products[index].Quantity >= quantity) {
-    this.products[index].Quantity = quantity;
+  //let value = this.quantityDetails.nativeElement.value;
+  //let quantity = parseInt(value);
+  let newQuantity = parseInt(quantity)
+  console.log(newQuantity);
+  if (index > -1 && this.products[index].Quantity >= newQuantity) {
+    this.products[index].Quantity = newQuantity;
     this.subtractPrices();
-  } else if (index > -1 && this.products[index].Quantity <= quantity) {
-    this.products[index].Quantity = quantity;
+  } else if (index > -1 && this.products[index].Quantity <= newQuantity) {
+    this.products[index].Quantity = newQuantity;
     this.sumPrices();
   };
 };
 
+/*
+UpdateQuantity(code: String) {
+  const value = document.querySelector('#newQuantity')?.textContent;
+  let quantity = value;
+  let index = this.products.findIndex(p => p.Code === code);
+  this.products[index].Quantity = quantity;
+  console.log(this.products);
+};
+*/
+
+
+
 deleteProductToDetails(code: String) {
+  let amountToRemove = 1;
   let index = this.products.findIndex(p => p.Code === code);
   if (index > -1 && confirm('¿Desea eliminar el producto?')) {
-    this.products.splice(index, 1);
+    this.products.splice(index, amountToRemove);
     this.subtractPrices();
   }
 };
 
 sumPrices() {
+  let initialValue = 0;
   this.total_price = this.products.reduce((
-    acc,
-    obj,
-  ) => acc + (obj.Price * obj.Quantity), 0);
+    currentValue,
+    object,
+  ) => currentValue + (object.Price * object.Quantity), initialValue);
 };
 
 subtractPrices() {
+  let initialValue = 0;
   this.total_price = this.products.reduce((
-    acc,
-    obj,
-  ) => acc - (obj.Price * obj.Quantity) *-1 , 0  );
+    currentValue,
+    object,
+  ) => currentValue - (object.Price * object.Quantity) * -1, initialValue);
 };
 
-};
-
-
-
-
+openDialog() {
   
+};
+
+};
+
+
+
+
+
