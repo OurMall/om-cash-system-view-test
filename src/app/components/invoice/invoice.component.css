@@ -7,7 +7,7 @@
     margin: 30px 0 0 150px;
 }
 .title{
-	background: #000000;
+	background: #222222;
 	padding: 20px 0;
 	font-size: 140%;
 	font-weight: 300;
@@ -212,6 +212,36 @@
 	font-size: 1rem;
 	background-color: #ff1818;	
 	color: white;
+}
+
+.edit {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: none;
+	font-size: 1rem;
+	margin: 0 20px 0 0;
+	background-color: #0aa5ff;	
+	color: white;
+}
+
+.input-edit {
+	width: 70px;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
+.input-edit:focus{
+	box-shadow: 0 0 5px #000000;
+	padding: 3%;
+	border: 1px solid #000000;
+}
+
+.btn-methods {
+	width: 10%;
 }
 
 

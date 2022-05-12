@@ -7,6 +7,8 @@ import { Product } from 'src/app/models/product';
 import { InvoiceService } from 'src/app/services/ServicesInvoices/invoice.service';
 import { ProductsService } from 'src/app/services/ServicesProducts/products.service';
 import { Invoice } from '../../models/invoice'; 
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -19,7 +21,7 @@ export class InvoiceComponent implements OnInit {
   public id_client!: string;
   public details!: Details[];
   public total_price!: number;
-  public invoice1!: Invoice;
+  public invoice!: Invoice;
   public products!: any[];
   public payment_method!: string;
   public codeProduct!: string;
@@ -39,12 +41,13 @@ export class InvoiceComponent implements OnInit {
   constructor(
       private apiInvoice: InvoiceService,
       private apiProduct: ProductsService,
-      private formBuilder: FormBuilder,
-      public snackBar: MatSnackBar
+      private formBuilder: FormBuilder, 
+      public snackBar: MatSnackBar,
+
 
   ) { 
     this.products = [];
-    this.invoice1 = {id_client:this.id_client, details: [], total_price:this.total_price, payment_method: "Nada"};
+    this.invoice = {id_client:this.id_client, details: [], total_price:this.total_price, payment_method: "Nada"};
   };
   ngOnInit(): void {
     //this.getInvoices();
@@ -64,11 +67,11 @@ export class InvoiceComponent implements OnInit {
       Code: "",
       Quantity: 0
     };
-    // Valido que si se ingrese un código y en caso de que no se ingrese salta este mensaje
+    // Valida que sí se ingrese un código 
     if (this.codeProduct == null || undefined) {
       this.snackBar.open("Por favor ingrese un código de producto") 
     } else if (this.quantity == null || undefined) {
-      this.snackBar.open("Por favor ingrese una cantidad para este producto") // Valido que si se ingrese una cantidad para poder registrar un producto
+      this.snackBar.open("Por favor ingrese una cantidad para este producto") // Valida que sí se ingrese una cantidad para poder registrar un producto
     } else {
       // Traigo el producto relacionado con el código que se ingresa
       this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => { 
@@ -79,18 +82,16 @@ export class InvoiceComponent implements OnInit {
               Name: element.name,
               Price: element.price,
               Code: this.codeProduct,
-              Quantity: this.quantity
-              
+              Quantity: this.quantity,
             };
-
-            3
-            // Ingresa el producto a la lista
-            this.products.push(product);
-          
-            // Ingreso el producto al cual se le asignaron los valores
-            console.log(this.products);
-
-            // Llamo a la función para que vaya sumando los valores y así optener el valor total de la factura
+            // Valida si el producto que se ingresa ya existe en los detalles y en caso de que exista suma la nueva cantidad a la cantidad que ya tenía
+            if (this.products.find(product => product.Code == this.codeProduct)) {
+              let index = this.products.findIndex(p => p.Code === this.codeProduct);
+              this.products[index].Quantity += this.quantity ;
+            } else {
+              this.products.push(product);
+            };
+            // Llamo a la función para que vaya sumando los valores y así obtener el valor total de la factura
             this.sumPrices();
           } catch (error) {
             
@@ -102,86 +103,70 @@ export class InvoiceComponent implements OnInit {
   };
 
 
-objectKeys(object: any) {
-  const keys = Object.keys(object);
-  return keys;
-}
-
-addInvoices() {
-  this.invoice1.total_price = this.total_price;
-  this.invoice1.details = this.products;
-  if (this.products.length === 0) {
-    this.snackBar.open("Para crear la factura necesita minimo un productos");
-  } else {
-    this.apiInvoice.postInvoices(this.invoice1).subscribe(response => {
-      this.snackBar.open('Factura creada', '', {
-          duration: 2000
-      })
-  });
-};
-
-}
-
-UpdateQuantity(code: String, quantity: string) {
-  let index = this.products.findIndex(p => p.Code === code);
-  console.log(index);
-  //let value = this.quantityDetails.nativeElement.value;
-  //let quantity = parseInt(value);
-  let newQuantity = parseInt(quantity)
-  console.log(newQuantity);
-  if (index > -1 && this.products[index].Quantity >= newQuantity) {
-    this.products[index].Quantity = newQuantity;
-    this.subtractPrices();
-  } else if (index > -1 && this.products[index].Quantity <= newQuantity) {
-    this.products[index].Quantity = newQuantity;
-    this.sumPrices();
+  addInvoices() {
+    this.invoice.total_price = this.total_price;
+    this.invoice.details = this.products;
+    /* ------- Valida que si hayan productos en los detalles para poder crear la factura ------- */ 
+    if (this.products.length === 0) {
+      this.snackBar.open("Para crear la factura necesita minimo un productos");
+    } else {
+      this.apiInvoice.postInvoices(this.invoice).subscribe(response => {
+        this.snackBar.open('Factura creada', '', {
+            duration: 2000
+        });
+      });
+    };
   };
-};
 
-/*
-UpdateQuantity(code: String) {
-  const value = document.querySelector('#newQuantity')?.textContent;
-  let quantity = value;
-  let index = this.products.findIndex(p => p.Code === code);
-  this.products[index].Quantity = quantity;
-  console.log(this.products);
-};
-*/
+  UpdateQuantity(code: String, quantity: string) {
+    let index = this.products.findIndex(p => p.Code === code);  // Posición del producto que se desea actualizar 
+    let newQuantity = parseInt(quantity)   // Nuevo valor que se desea ingresar 
+    
+    /* Se valida si el producto está en la lista y si su cantidad actual es mayor 
+    o igual a la que se está ingresando */
+    if (index > -1 && this.products[index].Quantity >= newQuantity && confirm('¿Desea actualizar la cantidad del producto?')) {
 
-
-
-deleteProductToDetails(code: String) {
-  let amountToRemove = 1;
-  let index = this.products.findIndex(p => p.Code === code);
-  if (index > -1 && confirm('¿Desea eliminar el producto?')) {
-    this.products.splice(index, amountToRemove);
-    this.subtractPrices();
-  }
-};
-
-sumPrices() {
-  let initialValue = 0;
-  this.total_price = this.products.reduce((
-    currentValue,
-    object,
-  ) => currentValue + (object.Price * object.Quantity), initialValue);
-};
-
-subtractPrices() {
-  let initialValue = 0;
-  this.total_price = this.products.reduce((
-    currentValue,
-    object,
-  ) => currentValue - (object.Price * object.Quantity) * -1, initialValue);
-};
-
-openDialog() {
-  
-};
-
-};
+      this.products[index].Quantity = newQuantity; // Se cambia la cantidad que tiene el producto por la nueva
+      this.subtractPrices(); // Se llama a la función que se encarga de restar los valores para obtener el total de la factura
+    } else if (index > -1 && this.products[index].Quantity <= newQuantity && confirm('¿Desea actualizar la cantidad del producto?')) {
+      this.products[index].Quantity = newQuantity;
+      this.sumPrices(); // Se llama a la función que se encarga de sumar los valores para obtener el total de la factura
+    };
+  };
 
 
+  deleteProductToDetails(code: String) {
+    let amountToRemove = 1;
+    let index = this.products.findIndex(p => p.Code === code);
+    if (index > -1 && confirm('¿Desea eliminar el producto?')) {
+      this.products.splice(index, amountToRemove);
+      this.subtractPrices();
+    };  
+  };
 
+  sumPrices() {
+    let initialValue = 0;
+    this.total_price = this.products.reduce((
+      currentValue,
+      object,
+    ) => currentValue + (object.Price * object.Quantity), initialValue);
+  };
 
+  subtractPrices() {
+    let initialValue = 0;
+    this.total_price = this.products.reduce((
+      currentValue,
+      object,
+    ) => currentValue - (object.Price * object.Quantity) * -1, initialValue);
+  };
 
+  /*openAdd() {
+    const dialogRef = this.dialog.open(DialogInvoiceComponent, {
+      width: '30000',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getInvoices();
+    })
+  };
+  */
+}

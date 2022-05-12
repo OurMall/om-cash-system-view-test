@@ -16,8 +16,7 @@
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
-                <th>Eliminar</th>
-                <th>Actualizar</th>
+                <th>Lorem</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +24,9 @@
                     <td>{{item.Code}}</td>
                     <td>{{item.Name}}</td>
                     <td>{{item.Price}}</td>
-                    <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails ></td>
+                    <td><input type="number" class="input-edit" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails ></td>
                     <td>{{item.Price * item.Quantity | currency}}</td>
-                    <td class="icons"><button class="delete" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash" ></i></button></td>
-                    <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value)">Actualizar</button></td>
+                    <td class="icons"><button class="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value)"><i class="fa-solid fa-pen-to-square"></i></button><button class="delete" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash" ></i></button></td>
                 </tr>
             </tbody>
             </table>
@@ -37,6 +35,6 @@
     <div class="total">
         <h1 class="totali">Total a pagar: {{total_price | currency}}</h1>
     </div>
-    <button type="submit" (click)="openDialog()"></button>
-    <button type="submit" (click)="addInvoices()">Crear factura</button>
+ 
+    
 

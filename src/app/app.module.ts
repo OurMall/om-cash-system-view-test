@@ -27,6 +27,9 @@ import { MatSliderModule } from '@angular/material/slider';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,10 @@ import { MatSliderModule } from '@angular/material/slider';
     NavsliderComponent,
     CardBoxComponent,
     TablesComponent,
-    CalculatorComponent
+    CalculatorComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
