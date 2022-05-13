@@ -1,7 +1,7 @@
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-    <input  type="text" placeholder="Código del producto"  [(ngModel)]="codeProduct" formControlName="Code" >
+   <input  type="text" placeholder="Nombre del producto"  [(ngModel)]="nameProduct" formControlName="Name" value="{{nameProduct}}" >
     <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0"  >
     <button type="submit" class="btn-pro"  value="Send" >Send</button>
     </form>
@@ -30,11 +30,18 @@
                 </tr>
             </tbody>
             </table>
+            <select class="form-select" aria-label="Default select example" #productSelect (change)="selectProduct(productSelect.value)">
+
+                <option *ngFor="let object of showProducts" [value]="object.name">{{object.name}}</option>
+              </select>
             
     </div>
     <div class="total">
         <h1 class="totali">Total a pagar: {{total_price | currency}}</h1>
     </div>
+
+    <button mat-raised-button (click)="openDialog()" class="btn-dialog" >Pagar</button>
  
+    
     
 

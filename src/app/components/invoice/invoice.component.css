@@ -244,6 +244,15 @@
 	width: 10%;
 }
 
+.btn-dialog {
+	border: none;
+	background: green;
+	color: #dfdfdf;
+	width: 80px;
+	height: 30px;
+	font-size: 17px;
+}
+
 
 
 

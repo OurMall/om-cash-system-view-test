@@ -7,7 +7,8 @@ import { Product } from 'src/app/models/product';
 import { InvoiceService } from 'src/app/services/ServicesInvoices/invoice.service';
 import { ProductsService } from 'src/app/services/ServicesProducts/products.service';
 import { Invoice } from '../../models/invoice'; 
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MyModuleComponent } from '../my-module/my-module.component';
 
 
 
@@ -24,9 +25,10 @@ export class InvoiceComponent implements OnInit {
   public invoice!: Invoice;
   public products!: any[];
   public payment_method!: string;
-  public codeProduct!: string;
+  public nameProduct!: string;
   public searhProduct!: Observable<Product>;
   public quantity!: number;
+  public showProducts!: any[];
 
   public detailsForm = this.formBuilder.group({
     Name: ["", Validators.required],
@@ -39,6 +41,7 @@ export class InvoiceComponent implements OnInit {
   public quantityDetails!: ElementRef;
 
   constructor(
+      private dialog: MatDialog,
       private apiInvoice: InvoiceService,
       private apiProduct: ProductsService,
       private formBuilder: FormBuilder, 
@@ -49,15 +52,44 @@ export class InvoiceComponent implements OnInit {
     this.products = [];
     this.invoice = {id_client:this.id_client, details: [], total_price:this.total_price, payment_method: "Nada"};
   };
+  
   ngOnInit(): void {
-    //this.getInvoices();
+    this.getProducts();
+  };
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MyModuleComponent,{
+      width: '500px',
+      height: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result)
+    });
   }
+
+
   
   getInvoices() {
     this.apiInvoice.getInvoices().subscribe((invoice:any) => {
-      console.log(invoice, "bd")
       this.products = invoice;
     })
+  };
+
+  selectProduct(nameProduct:string) {
+    this.nameProduct = nameProduct;
+  };
+
+  getProducts() {
+    this.apiProduct.getProducts().subscribe((response => {
+      try {
+        this.showProducts = response;
+        console.log(this.showProducts);
+      } catch (error) {
+        console.log("Error al traer productos")
+      }
+    }));
   };
 
   addProductsToDetails() {
@@ -68,25 +100,25 @@ export class InvoiceComponent implements OnInit {
       Quantity: 0
     };
     // Valida que sí se ingrese un código 
-    if (this.codeProduct == null || undefined) {
+    if (this.nameProduct == null || undefined) {
       this.snackBar.open("Por favor ingrese un código de producto") 
     } else if (this.quantity == null || undefined) {
       this.snackBar.open("Por favor ingrese una cantidad para este producto") // Valida que sí se ingrese una cantidad para poder registrar un producto
     } else {
       // Traigo el producto relacionado con el código que se ingresa
-      this.apiProduct.getProductsByAdi(this.codeProduct).subscribe((response => { 
+      this.apiProduct.getProductsByAdi(this.nameProduct).subscribe((response => { 
         try {
             //  Asigno los valor que necesito del producto a la variable product que es de tipo Product
             const element = response[0];  
               product = {
-              Name: element.name,
+              Name: this.nameProduct,
               Price: element.price,
-              Code: this.codeProduct,
+              Code: element.code,
               Quantity: this.quantity,
             };
             // Valida si el producto que se ingresa ya existe en los detalles y en caso de que exista suma la nueva cantidad a la cantidad que ya tenía
-            if (this.products.find(product => product.Code == this.codeProduct)) {
-              let index = this.products.findIndex(p => p.Code === this.codeProduct);
+            if (this.products.find(product => product.Name == this.nameProduct)) {
+              let index = this.products.findIndex(p => p.Name === this.nameProduct);
               this.products[index].Quantity += this.quantity ;
             } else {
               this.products.push(product);
@@ -124,11 +156,10 @@ export class InvoiceComponent implements OnInit {
     
     /* Se valida si el producto está en la lista y si su cantidad actual es mayor 
     o igual a la que se está ingresando */
-    if (index > -1 && this.products[index].Quantity >= newQuantity && confirm('¿Desea actualizar la cantidad del producto?')) {
-
+    if (index > -1 && this.products[index].Quantity >= newQuantity) {
       this.products[index].Quantity = newQuantity; // Se cambia la cantidad que tiene el producto por la nueva
       this.subtractPrices(); // Se llama a la función que se encarga de restar los valores para obtener el total de la factura
-    } else if (index > -1 && this.products[index].Quantity <= newQuantity && confirm('¿Desea actualizar la cantidad del producto?')) {
+    } else if (index > -1 && this.products[index].Quantity <= newQuantity) {
       this.products[index].Quantity = newQuantity;
       this.sumPrices(); // Se llama a la función que se encarga de sumar los valores para obtener el total de la factura
     };
@@ -141,7 +172,7 @@ export class InvoiceComponent implements OnInit {
     if (index > -1 && confirm('¿Desea eliminar el producto?')) {
       this.products.splice(index, amountToRemove);
       this.subtractPrices();
-    };  
+    }
   };
 
   sumPrices() {
@@ -160,13 +191,7 @@ export class InvoiceComponent implements OnInit {
     ) => currentValue - (object.Price * object.Quantity) * -1, initialValue);
   };
 
-  /*openAdd() {
-    const dialogRef = this.dialog.open(DialogInvoiceComponent, {
-      width: '30000',
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.getInvoices();
-    })
-  };
-  */
+
+
 }
+
