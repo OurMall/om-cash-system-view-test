@@ -59,8 +59,8 @@ export class InvoiceComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(MyModuleComponent,{
-      width: '500px',
-      height: '500px',
+      width: '450px',
+      height: '450px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

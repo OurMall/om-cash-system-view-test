@@ -24,6 +24,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablesComponent } from './components/tables/tables.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { MatSliderModule } from '@angular/material/slider';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {DialogModule} from 'primeng/dialog';
+import { MyModuleComponent } from './components/my-module/my-module.component';
 
 
 
@@ -43,6 +47,7 @@ import { MatSliderModule } from '@angular/material/slider';
     CardBoxComponent,
     TablesComponent,
     CalculatorComponent,
+    MyModuleComponent,
 
 
 
@@ -61,10 +66,16 @@ import { MatSliderModule } from '@angular/material/slider';
     MatSnackBarModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatSliderModule 
+    AutoCompleteModule,
+    MatSliderModule,
+    DialogModule,
+    MatAutocompleteModule
 
 
 
+  ],
+  entryComponents: [
+    MyModuleComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

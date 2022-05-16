@@ -1,17 +1,13 @@
-<h2 mat-dialog-title>Como deseas pagar</h2>
+<div class="container">
 
-<mat-dialog-content>
-  <div class="nav-slide">
-    <nav class="nav-items">
-    <ul>
-      <li><a href="#">Lorem</a></li>
-      <li><a href="#">Lorem</a></li>
-    </ul>
-  </nav>
-  
+  <h2 class="title" >¿Como deseas pagar?</h2>
+  <div class="cash" >
+    <button class="money" (click)="save()"> <i class="fa-solid fa-money-bill-1-wave"></i>Efectivo</button>
   </div>
-</mat-dialog-content>
+  <div class="debit-d">
+    <button class="debit"  (click)="save()"><i class="fa-brands fa-cc-visa"></i>DC & CC</button>  
+  </div>
+  <button class="btn-fac" mat-button (click)="save()">Facturar</button>
 
-<mat-dialog-actions>
-  <button mat-button (click)="save()">Facturar</button>
-</mat-dialog-actions>
+</div>
+
