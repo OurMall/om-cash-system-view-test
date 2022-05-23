@@ -16,13 +16,119 @@ img {
     width: 120px;
     float: right;
     margin-top: 40px;
+    margin-right: 60px;
+}
+
+.information {
+    margin-bottom: 25px;
 }
 
 .name-local{
-    font-size: 17px;
+    font-size: 17px;    
     font-weight: 500;
 }
 
 p {
     font-weight: 300s;
 }
+
+.h2-fac {
+    color: #027ed8;
+}
+
+.information2{
+    float: left;
+    width: 30%;
+    font-weight: 500;
+
+}
+
+.information-fac {
+    display: inline-block;
+    width: 8%;
+    margin-left: 520px;
+}
+
+table {
+    margin-top: 50px;
+}
+
+
+h3 {
+    font-weight: 500;
+    color: #027ed8;
+}
+
+.details-fac {
+    display: inline-block;
+    width: 15%;
+    height: 200px;
+    float: right;
+}
+
+.p-information {
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+
+.btn-download {
+    float: right;
+    width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	font-size: 1.3rem;
+	margin: 0 20px 0 0;
+	background-color: #027ed8;	
+	color: white;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

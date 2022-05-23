@@ -1,21 +1,34 @@
-
+<div id="htmlInvoice">
     <div class="header">
     <h1>FACTURA</h1>
-    <img src="../../../assets/om-logo-6.png" alt="">
+    <img src="../../../assets/om-logo-6.svg" alt="">
     </div>
     <div class="information">
         <h3 class="name-local">Mercamos</h3>
-        <p>Calle 50 Lindaraja</p>
-        <p>Armenia,Quindio</p>
+        <p class="p-information">Calle 50 Lindaraja</p>
+        <p class="p-information">Armenia,Quindio</p>
     </div>
 
     <div class="fac">
-        <h2>FACTURAR A </h2>
+      <div class="information2">
+        <h3 >FACTURAR A </h3>
         <p>Pepita Perez</p>
         <p>105484878</p>
         <p>Fachada mz 3 #11</p>
+      </div>
+      <div class="information-fac">
+        <h3>N FACTURA</h3>
+        <h3>FECHA </h3>
+        <h3>N PEDIDO</h3>
+
+      </div>
+      <div class="details-fac">
+        <p class="p-information">5188484</p>
+        <p class="p-information">23/05/2022</p>
+        <p class="p-information">155</p>
+
+      </div>
     </div>
-    <div id="htmlInvoice">
     <table class="table table-striped-columns">
       <thead>
         <tr>
@@ -40,5 +53,5 @@
     </table>
   </div>
   <div>
-    <button (click)="makePDF()">download</button>
+    <button class="btn-download" (click)="makePDF()"><i class="fa-solid fa-download"></i></button>
   </div>
