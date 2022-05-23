@@ -1,13 +1,16 @@
 <div class="container">
 
-  <h2 class="title" >¿Como deseas pagar?</h2>
+  <h2 class="title" >¿Como deseas pagar? <button class="close" ><i class="fa-solid fa-x"></i></button></h2>
   <div class="cash" >
-    <button class="money" (click)="save()"> <i class="fa-solid fa-money-bill-1-wave"></i>Efectivo</button>
+    <button class="money" > <i class="fa-solid fa-money-bill-1-wave"></i>Efectivo</button>
   </div>
   <div class="debit-d">
-    <button class="debit"  (click)="save()"><i class="fa-brands fa-cc-visa"></i>DC & CC</button>  
+    <button class="debit" ><i class="fa-brands fa-cc-visa"></i>DC & CC</button>  
   </div>
-  <button class="btn-fac" mat-button (click)="save()">Facturar</button>
+  <div class="others">
+  <button class="btn-other" ><i class="fa-solid fa-ellipsis"></i>Otros</button>
+  </div>
+
 
 </div>
 

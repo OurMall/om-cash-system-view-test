@@ -19,6 +19,12 @@
   align-items: center;
 }
 
+.others {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .money {
   color: #02741a !important;
   font-size: 20px;
@@ -26,7 +32,7 @@
   padding: 0.5em 1.2em;
   background: #eb444400;
   border: 2px solid;
-  border-color: #028a36;
+  border-color: #02741a;
   transition: all 1s ease;
   position: relative;
   margin-bottom: 20px;
@@ -60,6 +66,41 @@
 
 .debit i {
   margin-right: 8px;
+}
+
+.close {
+  border: none;
+  background: transparent;
+  color: #fff;
+  position: relative;
+  left: 100px;
+  bottom: 18px;
+}
+
+.close:hover{
+  color: #ff5151;
+}
+
+.btn-other {
+  color: #ff1313 !important;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5em 1.2em;
+  background: rgba(0,0,0,0);
+  border: 2px solid;
+  border-color: #ff1313;
+  transition: all 1s ease;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.btn-other i {
+  margin-right: 15px;
+}
+
+.btn-other:hover {
+  background: #ff1313;
+  color: #fff !important;
 }
 
 
