@@ -5,10 +5,12 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { MainComponent } from './components/main/main.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { ProductsComponent } from './components/products/products.component';
+import { Template404Component } from './components/template404/template404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch:'full'},
   { path: 'invoice', component: InvoiceComponent },
+  { path: 'T404', component: Template404Component },
   { path: 'pdf', component: PdfComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'details', component: DetailsComponent },

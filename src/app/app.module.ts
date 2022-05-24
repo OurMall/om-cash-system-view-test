@@ -29,6 +29,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {DialogModule} from 'primeng/dialog';
 import { MyModuleComponent } from './components/my-module/my-module.component';
 import { MmodalComponent } from './components/mmodal';
+import { Template404Component } from './components/template404/template404.component';
 
 
 
@@ -51,7 +52,8 @@ import { MmodalComponent } from './components/mmodal';
     TablesComponent,
     CalculatorComponent,
     MyModuleComponent,
-    MmodalComponent
+    MmodalComponent,
+    Template404Component
 
 
 

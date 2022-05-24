@@ -51,6 +51,7 @@ p {
 
 table {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -78,11 +79,15 @@ h3 {
 	height: 50px;
 	border-radius: 50%;
 	border: none;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	margin: 0 20px 0 0;
-	background-color: #027ed8;	
-	color: white;
+	background-color: #fd3030;	
+	color: #ffffff;
 
+}
+
+.btn-download:hover{
+    background-color: #111111;
 }
 
 
