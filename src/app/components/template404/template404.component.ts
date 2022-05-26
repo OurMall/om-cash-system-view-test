@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import 'boxicons'
 
 @Component({
   selector: 'app-template404',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Template404Component implements OnInit {
 
-  constructor() { }
+  constructor(private _CargaScripts:CargarScriptsService) 
+  {
+    _CargaScripts.Carga(["scrollreveal.min","main"]);
+   }
 
   ngOnInit(): void {
   }
+
+  
 
 }
