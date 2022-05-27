@@ -4,5 +4,6 @@ export interface Product {
      Name:string;
      Price:number;
      Quantity:number;
+     Vat :number;
 
 }

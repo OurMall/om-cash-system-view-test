@@ -8,7 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { Template404Component } from './components/template404/template404.component';
 
 const routes: Routes = [
-  { path: '', component: Template404Component},
+  { path: '', redirectTo: '', pathMatch:'full'},  
   { path: 'invoice', component: InvoiceComponent },
   { path: 'T404', component: Template404Component },
   { path: 'pdf', component: PdfComponent },

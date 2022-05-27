@@ -1,3 +1,4 @@
+<div class="container">
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
@@ -7,6 +8,8 @@
     </form>
     </div>
 
+
+    
     <div class="table-wrapper"> 
         <table class="fl-table">
             <thead>
@@ -15,19 +18,23 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
+                <td>IVA</td>
                 <th>Subtotal</th>
                 <th>Lorem</th>
             </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of products">
-                    <td>{{item.Code}}</td>
-                    <td>{{item.Name}}</td>
-                    <td>{{item.Price}}</td>
-                    <td><input type="number" class="input-edit" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails ></td>
-                    <td>{{item.Price * item.Quantity | currency}}</td>
-                    <td class="icons"><button class="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value)"><i class="fa-solid fa-pen-to-square"></i></button><button class="delete" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash" ></i></button></td>
-                </tr>
+              <tr *ngFor="let item of products">
+                <td>{{item.Code}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Price | currency}}</td>
+                <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails max="9999"></td>
+                <td>{{item.Vat * item.Quantity | currency}}</td>
+                <td>{{item.Price * item.Quantity | currency}}</td>
+                <td><button mat-raised-button color="warn" (click)="deleteProductToDetails(item.Code)">Eliminar</button></td>
+                <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)">Actualizar</button></td>
+            </tr>
+
             </tbody>
             </table>
             <select class="form-select" aria-label="Default select example" #productSelect (change)="selectProduct(productSelect.value)">
@@ -72,7 +79,7 @@
       
         </svg>
       </button>
- 
+    </div>
     
     
 

@@ -9,6 +9,7 @@ import { ProductsService } from 'src/app/services/ServicesProducts/products.serv
 import { Invoice } from '../../models/invoice'; 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MyModuleComponent } from '../my-module/my-module.component';
+import { PdfComponent } from '../pdf/pdf.component';
 
 
 
@@ -17,6 +18,7 @@ import { MyModuleComponent } from '../my-module/my-module.component';
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css']
 })
+
 export class InvoiceComponent implements OnInit {
 
   public id_client!: string;
@@ -29,6 +31,8 @@ export class InvoiceComponent implements OnInit {
   public searhProduct!: Observable<Product>;
   public quantity!: number;
   public showProducts!: any[];
+  public initialValueVAT!: number; 
+
 
   public detailsForm = this.formBuilder.group({
     Name: ["", Validators.required],
@@ -97,43 +101,50 @@ export class InvoiceComponent implements OnInit {
       Name: "",
       Price: 0.0,
       Code: "",
-      Quantity: 0
+      Quantity: 0,
+      Vat: 0.0
     };
-    // Valida que sí se ingrese un código 
+    /* ------- Valida que sí se ingrese un código ------- */
     if (this.nameProduct == null || undefined) {
       this.snackBar.open("Por favor ingrese un código de producto") 
+      /* ------- Valida que sí se ingrese una cantidad para poder registrar un producto ------- */
     } else if (this.quantity == null || undefined) {
-      this.snackBar.open("Por favor ingrese una cantidad para este producto") // Valida que sí se ingrese una cantidad para poder registrar un producto
+      this.snackBar.open("Por favor ingrese una cantidad para este producto") 
     } else {
-      // Traigo el producto relacionado con el código que se ingresa
+      /* ------- Traigo el producto relacionado con el código que se ingresa ------- */
       this.apiProduct.getProductsByAdi(this.nameProduct).subscribe((response => { 
         try {
-            //  Asigno los valor que necesito del producto a la variable product que es de tipo Product
+            /*  ------- Asigno los valor que necesito del producto a la variable product ------- */
             const element = response[0];  
+            let priceProduct = Math.round((element.price * parseFloat(`${1}.${element.vat}`)));
               product = {
               Name: this.nameProduct,
-              Price: element.price,
+              Price: priceProduct,
               Code: element.code,
               Quantity: this.quantity,
+              Vat:((element.price * parseFloat(`${0}.${element.vat}`)))
             };
-            // Valida si el producto que se ingresa ya existe en los detalles y en caso de que exista suma la nueva cantidad a la cantidad que ya tenía
+            this.initialValueVAT = element.vat;
+            /* ------- Valida si el producto que se ingresa ya existe en los detalles y en caso de que exista suma la nueva cantidad a la cantidad que ya tenía ------- */
             if (this.products.find(product => product.Name == this.nameProduct)) {
               let index = this.products.findIndex(p => p.Name === this.nameProduct);
-              this.products[index].Quantity += this.quantity ;
+              let quantity = this.products[index].Quantity += this.quantity ;
+              this.UpdateQuantity(element.code, quantity, this.initialValueVAT);
             } else {
+              /* ------- Ingresa los productos a los detalles que va a tener la factura -------*/
               this.products.push(product);
             };
-            // Llamo a la función para que vaya sumando los valores y así obtener el valor total de la factura
+            /* ------- Llamo a la función para que vaya sumando los valores y así obtener el valor total de la factura -------*/
             this.sumPrices();
+            //this.calculateVat(element.vat, element.price, this.quantity, element.code);
           } catch (error) {
             
-            // En caso de que no haya un producto con el código que se ingreso salta este mensaje
+            /* ------- En caso de que no haya un producto con el código que se ingreso salta este mensaje ------- */
             this.snackBar.open("No hay un producto con éste código");
           };
       }));
     };
   };
-
 
   addInvoices() {
     this.invoice.total_price = this.total_price;
@@ -150,7 +161,7 @@ export class InvoiceComponent implements OnInit {
     };
   };
 
-  UpdateQuantity(code: String, quantity: string) {
+  UpdateQuantity(code: String, quantity: string, vat:number) {
     let index = this.products.findIndex(p => p.Code === code);  // Posición del producto que se desea actualizar 
     let newQuantity = parseInt(quantity)   // Nuevo valor que se desea ingresar 
     
