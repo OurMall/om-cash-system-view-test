@@ -13,7 +13,6 @@ export class MyModuleComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<MyModuleComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any) {
-      
     }
 
   ngOnInit(): void {
