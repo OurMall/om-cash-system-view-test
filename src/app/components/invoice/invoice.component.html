@@ -61,14 +61,53 @@
               <h2>Information</h2>
         
               <div class="content-information">
-                <address>
-                  Name<br />
-                  403 Oakland Ave Street, A city, Florida, 32104,<br />
-                  United States of America
-                </address>
-              </div>
-            </div>
-		</div>
+                <div class="content-information-i">
+                  <h1>Name</h1>
+                  <p>403 Oakland Ave Street, A city, Florida, 32104,
+                  United States of America</p>
+                </div>
+                </div>
+                <div class="pay-methods">
+                  <fieldset>
+                    <legend>Payment Method</legend>
+                    <br>
+                    <div class="form__radios">
+                      <div class="form__radio">
+                        <input class="input-payments" checked id="visa" name="payment-method" type="radio" placeholder="Visa payment" />
+                        <i class="fa-solid fa-credit-card"></i>
+                        <h4 class="payments-title">Credit Cards</h4>
+                      </div>
+              
+                      <div class="form__radio">
+                        <input class="input-payments" id="paypal" name="payment-method" type="radio" />
+                        <i class="fa-brands fa-cc-paypal"></i>
+                        <h4 class="payments-title">Paypal</h4>
+                      </div>
+              
+                      <div class="form__radio">
+                        <input class="input-payments" id="mastercard" name="payment-method" type="radio" />
+                        <i class="fa-solid fa-money-bill-1"></i>
+                        <h4 class="payments-title">Cash</h4>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  
+                </div>
+                <div class="details-payment">
+                    <h2 class="details-h2">Total: </h2>
+                    <p class="p-details">Total price: {{total_price | currency}}</p>
+                    
+
+                </div>
+                <div id="btn-pay">
+                  <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Pay</span>
+                  </button>
+                </div>
 	</div>
   
     

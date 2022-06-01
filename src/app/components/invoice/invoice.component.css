@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&family=Source+Code+Pro:wght@700&display=swap');
+
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+
+
+
+
 .container {
 	width: 100vw;
 	height: 100%;
@@ -371,10 +378,11 @@
 		visibility: visible;
 	} 
 	.contenedor{
+		font-family: 'Rubik', sans-serif;
 		width: 400px;
 		height: 700px;
 		margin: auto;
-		background: #fff;
+		background-image: linear-gradient(135deg, #16a8ff 0%, #444df7 100%);
 		box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
 		transition: all 500ms ease;
 		position: relative;
@@ -419,6 +427,161 @@
 		border-radius: 4px;
 		cursor: pointer;
 	}
+
+	.content-information-i {
+		border-radius: 1em;
+  	background-color: none;
+  	color: #fff;
+  	padding: 1em;
+	}
+
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	legend {
+		display: flex;
+		justify-content: center;
+		
+		font-weight: 600;
+		margin-block-end: 0.5em;
+		padding: 0;
+	}
+
+	input[type="radio"]{
+		color: #000000;
+		border: 2px solid black;
+	}
+	
+	.form {
+		display: grid;
+		gap: 2em;
+	}
+	
+	.form__radios {
+		margin-top: 20px;
+		display: grid;
+		gap: 1em;
+	}
+	
+	.form__radio {
+		align-items: center;
+		height: 45px;
+		background-color: #fefdfe;
+		border-radius: 1em;
+		box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+		display: flex;
+		padding: 1em;
+	}
+	
+	.form__radio i {
+		font-size: 20px;
+		margin-left: 10px;
+	}
+
+	.payments-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+		font-weight: 500;
+		margin: 0 0 0 10px;
+	}
+
+	.learn-more {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		outline: none;
+		border: 0;
+		vertical-align: middle;
+		text-decoration: none;
+		background: transparent;
+		padding: 0;
+		font-size: inherit;
+		font-family: inherit;
+	}
+	.learn-more {
+		width: 12rem;
+		height: auto;
+	}
+	.learn-more .circle {
+		transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+		position: relative;
+		display: block;
+		margin: 0;
+		width: 3rem;
+		height: 3rem;
+		background: #282936;
+		border-radius: 1.625rem;
+	}
+	.learn-more .circle .icon {
+		transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		background: #fff;
+	}
+	.learn-more .circle .icon.arrow {
+		transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+		left: 0.625rem;
+		width: 1.125rem;
+		height: 0.125rem;
+		background: none;
+	}
+	.learn-more .circle .icon.arrow::before {
+		position: absolute;
+		content: "";
+		top: -0.25rem;
+		right: 0.0625rem;
+		width: 0.625rem;
+		height: 0.625rem;
+		border-top: 0.125rem solid #fff;
+		border-right: 0.125rem solid #fff;
+		transform: rotate(45deg);
+	}
+	.learn-more .button-text {
+		transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 0.75rem 0;
+		color: #282936;
+		font-weight: 700;
+		line-height: 1.6;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.learn-more:hover .circle {
+		width: 100%;
+	}
+	.learn-more:hover .circle .icon.arrow {
+		background: #fff;
+		transform: translate(1rem, 0);
+	}
+	.learn-more:hover .button-text {
+		color: #fff;
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	@media only screen and (min-width:320px) and (max-width:768px){
 		.contenedor{
 			width: 95%;
