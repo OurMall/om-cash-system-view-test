@@ -490,6 +490,13 @@
 		margin: 0 0 0 10px;
 	}
 
+	#btn-pay {
+		margin-top: 45px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.learn-more {
 		position: relative;
 		display: inline-block;
@@ -566,6 +573,19 @@
 	}
 	.learn-more:hover .button-text {
 		color: #fff;
+	}
+
+	.details-h2 {
+		font-size: 20px;
+		margin-top: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: 600;
+	}
+
+	.p-details {
+		margin-left: 80px;
 	}
 	
 
