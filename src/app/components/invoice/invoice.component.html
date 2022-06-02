@@ -54,10 +54,10 @@
 	<label for="btn-modal" class="lbl-modal">Pagar</label>
 	<div class="modal">
 		<div class="contenedor">
-			<label for="btn-modal">X</label>
+			<label for="btn-modal" class="lbl-cerrar">X</label>
 			<div class="contenido">
 				<div class="iphone">
-            <div>
+            <div class="information">
               <i class="fa-solid fa-circle-info"></i>
         
               <div class="content-information">
@@ -71,29 +71,49 @@
                   <fieldset>
                     <legend>Payment Method</legend>
                     <br>
-                    <div class="form__radios">
-                      <div class="form__radio">
-                        <input class="input-payments" checked id="visa" name="payment-method" type="radio" placeholder="Visa payment" />
-                        <i class="fa-solid fa-credit-card"></i>
-                        <h4 class="payments-title">Credit Cards</h4>
+                    <section class="content-sec">
+                      <div class="app-paper">
+                        <div class="paper-title">Choose your payment method </div>
+                        <form action="" class="form-div">
+                          <!--Cash-->
+                          <input type="radio" name="methodtype" id="1" class="hidebx">
+                          <label for="1" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-cash-app.svg" alt=""></div>
+                              <div class="name-type">Cash</div>
+                            </div>
+                          </label>
+                          <!--MasterCard-->
+                          <input type="radio" name="methodtype" id="2" class="hidebx">
+                          <label for="2" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-mastercard.svg" alt=""></div>
+                              <div class="name-type">MasterCard</div>
+                            </div>
+                          </label>
+                          <!--Visa-->
+                          <input type="radio" name="methodtype" id="3" class="hidebx">
+
+                          <label for="3" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-visa.svg" alt=""></div>
+                              <div class="name-type">Visa</div>
+                            </div>
+                          </label>
+                          <!--Paypal-->
+                          <input type="radio" name="methodtype" id="4" class="hidebx">
+                          <label for="4" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-paypal.svg" alt=""></div>
+                              <div class="name-type">Paypal</div>
+                            </div>
+                          </label>
+                        </form>
                       </div>
-              
-                      <div class="form__radio">
-                        <input class="input-payments" id="paypal" name="payment-method" type="radio" />
-                        <i class="fa-brands fa-cc-paypal"></i>
-                        <h4 class="payments-title">Paypal</h4>
-                      </div>
-              
-                      <div class="form__radio">
-                        <input class="input-payments" id="mastercard" name="payment-method" type="radio" />
-                        <i class="fa-solid fa-money-bill-1"></i>
-                        <h4 class="payments-title">Cash</h4>
-                      </div>
-                    </div>
-                  </fieldset>
+
+                    </section>
 
                   
-                </div>
                 <div class="details-payment">
                     <h2 class="details-h2">Total </h2>
                     <p class="p-details">Total price: {{total_price | currency}}</p>
@@ -106,9 +126,11 @@
                       <span class="icon arrow"></span>
                     </span>
                     <span class="button-text">Pay</span>
+
+
                   </button>
                 </div>
-	</div>
+
   
     
     
