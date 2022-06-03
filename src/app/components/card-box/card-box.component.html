@@ -1,9 +1,57 @@
-<div class="card">
-  <h1 class="title">Registrer Product</h1>
-  <form>
-  <input type="text"  class="input-form" placeholder="Codigo del producto" />
-  <input type="text"  class="input-form2"placeholder="Cantidad" />
-  <input type="submit" class="btn-pro" value="Send" />
-  </form>
+<div class="full-content">
+  <nav class="navigation">
+    <div class="navigation-links">
+      <a href="" class="link">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="" class="link">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="" class="link">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="" class="link">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+  </nav>
+  <div class="card-content">
+    <div class="card">
+      <h1 class="title">Add Product</h1>
+      <form>
+      <input type="text"  class="input-form" placeholder="Nombre del producto" />
+      <input type="text"  class="input-form2"placeholder="Cantidad" />
+      <input type="submit" class="btn-pro" value="Send" />
+      </form>
+      </div>
+    </div>
+    <div class="content-table">
+      <div class="table-wrapper"> 
+        <table class="fl-table">
+            <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>IVA</th>
+                <th>Subtotal</th>
+                <th>Lorem</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of products">
+                <td>{{item.Code}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Price | currency}}</td>
+                <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails max="9999"></td>
+                <td>{{item.Vat * item.Quantity | currency}}</td>
+                <td>{{item.Price * item.Quantity | currency}}</td>
+                <td><button mat-raised-button color="warn" (click)="deleteProductToDetails(item.Code)">Eliminar</button></td>
+                <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)">Actualizar</button></td>
+              </tr>
+            </tbody>
+        </table>    
   </div>
+</div>
 

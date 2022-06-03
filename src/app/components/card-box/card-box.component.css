@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&family=Source+Code+Pro:wght@700&display=swap');
+
+/*Full Screen*/
+.full-content {
+  width: 100vw;
+  height: 100vh;
+  background-color: #2e3440;
+}
+/*Nav options system*/
+.navigation {
+  width: 100%;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.25rem 1rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  z-index: 1000;
+	margin-bottom: 50px;
+}
+
+.navigation-links {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-decoration: none;
+  color: #d8dee9;
+  border-radius: 2.5px;
+  margin: 0 0.15rem;
+}
+
+.link i {
+  font-size: 18px;
+}
+
+.link:hover {
+  cursor: pointer;
+  background-color: #3b4252;
+  color: #0086e6;
+}
+
+/*Card products*/
+
+.card-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.card{
+	font: 95% Arial, Helvetica, sans-serif;
+	width: 400px;
+	padding: 16px; 	
+	background: #ffffff;
+}
+.title{
+	background: #0068b3;
+	padding: 20px 0;
+	font-size: 140%;
+  font-family: 'Source Code Pro', monospace;
+	font-weight: 600;
+	text-align: center;
+	color: #fff;
+	margin: -17px -17px 17px -17px;
+}
+
+
+.card input[type="text"],
+.card input[type="date"],
+.card input[type="datetime"],
+.card input[type="email"],
+.card input[type="number"],
+.card input[type="search"],
+.card input[type="time"],
+.card input[type="url"],
+.card textarea,
+.card select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+  height: 20%;
+	background: #fff;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+  border-radius: 0.5rem;
+	padding: 3%;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.card input[type="text"]:focus,
+.card input[type="date"]:focus,
+.card input[type="datetime"]:focus,
+.card input[type="email"]:focus,
+.card input[type="number"]:focus,
+.card input[type="search"]:focus,
+.card input[type="time"]:focus,
+.card input[type="url"]:focus,
+.card textarea:focus,
+.card select:focus
+{
+	box-shadow: 0 0 5px #0086e6;
+	padding: 3%;
+}
+.btn-pro[type="submit"], input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #0068b3 ;
+  border-radius: .5rem;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 60;	
+	color: #fff;
+    
+} .btn-pro[type="submit"]:hover, .btn-pro[type="button"]:hover{
+	background: #0086e691;
+	color: #0068b3;
+}
+
+/*Table*/
+
+.content-table {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.table-wrapper{
+	background: none;
+	overflow-x: auto;
+  width: 700px;
+	height: 300px;
+ 
+}
+
+.table-wrapper::-webkit-scrollbar {
+	width: 7px;	
+	background: none;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+	background: #dfdfdf;
+	border-radius: 5px;
+}
+
+.fl-table {
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.fl-table td, .fl-table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.fl-table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 12px;
+}
+
+.fl-table thead th {
+  color: #0068b3;
+  background: #ffffff;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+  color: #ffffff;
+  background: #0068b3;
+}
+
+.fl-table tr:nth-child(even) {
+  background: #F8F8F8;
+}
