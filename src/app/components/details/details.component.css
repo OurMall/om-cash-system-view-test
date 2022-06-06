@@ -1,15 +1,246 @@
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 1px solid #d3d3d3;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #99f0fc;
-  }
+.content {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
+
+.header-chat {
+  width: 25%;
+  height: 100%;
+  background: #fff;
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.button-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.new-room {
+  border: none;
+  font-size: 2rem;
+  background: none;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 271px;
+}
+
+.input {
+  box-sizing: border-box;
+  color: #191919;
+  padding: 15px 15px 15px 35px;
+  width: 100%;
+  border-radius: 50px;
+  border: 2px solid #e7e7e7;
+}
+
+.input-icon {
+  color: #c5c5c5;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.chats {
+  margin-top: 50px;
+  overflow: auto;
+  height: 80%;
+}
+
+.view-chat {
+  cursor: pointer;
+  padding: 1rem;
+  background: rgb(243, 244, 246);
+  border-radius: 1.25rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.chats::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.chats::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+.chats::-webkit-scrollbar-button:increment,.chats::-webkit-scrollbar-button {
+  display: none;
+}
+
+.chats::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+
+
+.chats::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.chats::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.img-perfil {
+  border-radius: 999px;
+  align-self: flex-start;
+  width: 3rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-right: 25px;
+}
+
+.information {
+  overflow: hidden;
+  width: 100%;
+}
+
+.infor1{
+  display: flex;
+  width: 100%;
+}
+
+.name {
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.hour {
+  color: rgba(107,114,128);
+}
+
+.text {
+  display: block;
+  overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(107, 114, 128);
+}
+
+.conversation {
+  width: 75%;
+  display: block;
+  background: rgb(243, 244, 246);
+}
+
+.header-conversation {
+  padding: 1.5rem 5rem;
+  border-bottom: 1px solid rgb(215, 215, 215);
+}
+
+.content-conversation {
+  display: flex;
+}
+
+.information-conversation {
+  display: flex;
+  flex-grow: 2;
+}
+
+.img-conversation {
+  margin-right: 1rem;
+  position: relative;
+}
+
+.img-per {
+  border-radius: 9999px;
+  width: 3rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.state {
+  position: absolute;
+  padding: 0.25rem;
+  background-color: rgb(126, 126, 126);
+  border-color: rgba(31, 41, 55);
+  border-width: 2px;
+  border-radius: 9999px;
+  bottom: 2px;
+  right:2px;
+}
+
+.name-conversation {
+  display: block;
+  font-weight: 500;
+  margin: 0;
+}
+
+.state-short {
+  color: rgba(107, 114, 128);
+}
+
+.name-state-conversation {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.options {
+  display: flex;
+}
+
+.search-option {
+  cursor: pointer;
+  width: 1.5rem;
+  margin-right: 1rem;
+  display: block;
+  color: rgba(107, 114, 128)
+}
+
+.plus-option {
+  cursor: pointer;
+  width: 1.5rem;
+  color: rgba(107, 114, 128)
+}
+
+.chat-conversation {
+  padding: 1.5rem 5rem;
+  overflow: auto;
+  height: 75%;
+
+}
+
+.responses {
+  height: 200px;
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.img-per2 {
+  border-radius: 9999px;
+  align-self: flex-end;
+  width: 3rem;
+  margin-right: 1rem;
+  max-width: 100%;
+}
+
+.response-one {
+  flex-direction: column;
+  display: flex;
+}
+
+
+

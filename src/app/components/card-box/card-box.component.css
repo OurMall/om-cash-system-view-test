@@ -150,13 +150,16 @@
 /*Table*/
 
 .content-table {
+  position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+  margin-bottom: 50px;
 }
 
 .table-wrapper{
+  position: relative;
 	background: none;
 	overflow-x: auto;
   width: 700px;
@@ -210,3 +213,4 @@
 .fl-table tr:nth-child(even) {
   background: #F8F8F8;
 }
+
