@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
@@ -19,24 +18,15 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NavsliderComponent } from './shared/navslider/navslider.component';
 import { CardBoxComponent } from './components/card-box/card-box.component';
-import {CardModule} from 'primeng/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablesComponent } from './components/tables/tables.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
-import { MatSliderModule } from '@angular/material/slider';
-import {AutoCompleteModule} from 'primeng/autocomplete';
+import { MatSliderModule } from '@angular/material/slider';;
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {DialogModule} from 'primeng/dialog';
 import { MyModuleComponent } from './components/my-module/my-module.component';
 import { MmodalComponent } from './components/mmodal';
+import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -50,13 +40,11 @@ import { Template404Component } from './components/template404/template404.compo
     NavsliderComponent,
     CardBoxComponent,
     TablesComponent,
+    PdfComponent,
     CalculatorComponent,
     MyModuleComponent,
     MmodalComponent,
     Template404Component
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -65,19 +53,14 @@ import { Template404Component } from './components/template404/template404.compo
     RouterModule,
     AppRoutingModule,
     MatTableModule,
-    CardModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
     FormsModule, 
     ReactiveFormsModule,
-    AutoCompleteModule,
     MatSliderModule,
-    DialogModule,
     MatAutocompleteModule
-
-
 
   ],
   entryComponents: [

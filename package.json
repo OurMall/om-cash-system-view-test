@@ -27,7 +27,7 @@
     "pdfmake": "^0.2.5",
     "pdfmake-wrapper": "^2.1.3",
     "primeicons": "^5.0.0",
-    "primeng": "^13.4.0",
+    "primeng": "^13.4.1",
     "rxjs": "~7.4.0",
     "zone.js": "~0.11.4"
   },

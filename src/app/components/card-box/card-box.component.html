@@ -18,11 +18,12 @@
   <div class="card-content">
     <div class="card">
       <h1 class="title">Add Product</h1>
-      <form>
+      <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
       <input type="text"  class="input-form" placeholder="Nombre del producto" [(ngModel)]="nameProduct" formControlName="Name" value="{{nameProduct}}"/>
-      <input type="text"  class="input-form2"placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" />
+      <input type="number"  class="input-form2"placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" />
       <input type="submit" class="btn-pro" value="Send" />
       </form>
+
       </div>
     </div>
     <div class="content-table">
@@ -47,16 +48,102 @@
                 <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails max="9999"></td>
                 <td>{{item.Vat * item.Quantity | currency}}</td>
                 <td>{{item.Price * item.Quantity | currency}}</td>
-                <td><button mat-raised-button color="warn" (click)="deleteProductToDetails(item.Code)">Eliminar</button></td>
-                <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)">Actualizar</button></td>
+                <td><button  class="delete-btn" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash"></i></button><button class="update-btn" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)"><i class="fa-solid fa-pen"></i></button></td>
+    
               </tr>
             </tbody>
         </table>    
+        <div class="modal-confirmation">
+
+        </div>
   </div>
   
 
 
   </div>
-</div>
+  <div class="details-payment">
+    <h2 class="details-h2">Total </h2>
+    <p class="p-details">Total price: {{total_price | currency}}</p>
+  </div>
+  
+  <input type="checkbox" id="btn-modal">
+	<label for="btn-modal" class="lbl-modal">Pagar</label>
+  <button mat-raised-button color="primary" (click)="recordLocalStorage()">Crear</button>
+	<div class="modal">
+		<div class="contenedor">
+			<label for="btn-modal" class="lbl-cerrar">X</label>
+			<div class="contenido">
+				<div class="iphone">
+            <div class="information">
+              <i class="fa-solid fa-circle-info"></i>
+        
+              <div class="content-information">
+                <div class="content-information-i">
+                  <h1>Name</h1>
+                  <p>403 Oakland Ave Street, A city, Florida, 32104,
+                  United States of America</p>
+                </div>
+                </div>
+                <div class="pay-methods">
+                  <fieldset>
+                    <legend>Payment Method</legend>
+                    <br>
+                    <section class="content-sec">
+                      <div class="app-paper">
+                        <div class="paper-title">Choose your payment method </div>
+                        <form action="" class="form-div">
+                          <!--Cash-->
+                          <input type="radio" name="methodtype" id="1" class="hidebx">
+                          <label for="1" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-cash-app.svg" alt=""></div>
+                              <div class="name-type">Cash</div>
+                            </div>
+                          </label>
+                          <!--MasterCard-->
+                          <input type="radio" name="methodtype" id="2" class="hidebx">
+                          <label for="2" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-mastercard.svg" alt=""></div>
+                              <div class="name-type">MasterCard</div>
+                            </div>
+                          </label>
+                          <!--Visa-->
+                          <input type="radio" name="methodtype" id="3" class="hidebx">
+
+                          <label for="3" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-visa.svg" alt=""></div>
+                              <div class="name-type">Visa</div>
+                            </div>
+                          </label>
+                          <!--Paypal-->
+                          <input type="radio" name="methodtype" id="4" class="hidebx">
+                          <label for="4" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-paypal.svg" alt=""></div>
+                              <div class="name-type">Paypal</div>
+                            </div>
+                          </label>
+                        </form>
+                        
+                      </div>
+                      <div class="details-payment">
+                        <h2 class="details-h2">Total </h2>
+                        <p class="p-details">Total price: {{total_price | currency}}</p>
+                      </div>
+                      <div class="d-btn-pay">
+                      <button class="btn-payment-modal">Pagar</button>
+                      </div>
+
+                    </section>
+                  </fieldset>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>          
+</div>  
 
 

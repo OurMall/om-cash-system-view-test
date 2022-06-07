@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { Invoice } from 'src/app/models/invoice';
 import { InvoiceService } from 'src/app/services/ServicesInvoices/invoice.service';
 
 
@@ -12,16 +13,60 @@ import { InvoiceService } from 'src/app/services/ServicesInvoices/invoice.servic
 export class PdfComponent implements OnInit {
 
   title = 'FrontPrueba';
+  public invoices!: Invoice;
 
   public invoice!: any[];
+  public id_client!:string;
+  public products!: any[];
+  public total_price!:number;
+  snackBar: any;
 
   constructor(
-    private apiInvoice: InvoiceService
-  ) {};
+    private apiInvoice: InvoiceService,
+
+  ) {    
+    this.getInvoiceStorage();
+  };
 
   ngOnInit(): void {
     this.getInvoice();
+
   };
+
+  addInvoices() {
+
+    this.invoices.total_price = this.total_price;
+    this.invoices.details = this.products;
+    /* ------- Valida que si hayan productos en los detalles para poder crear la factura ------- */ 
+    if (this.products.length === 0) {
+      this.snackBar.open("Para crear la factura necesita mínimo un producto");
+    } else {
+      this.apiInvoice.postInvoices(this.invoices).subscribe(response => {
+        this.snackBar.open('Factura creada', '', {
+            duration: 2000
+        });
+      });
+    };
+  };
+
+  receiveInovice($event:Invoice) {
+    this.invoices = $event;
+  };
+
+  getInvoiceStorage() {
+    let total_price = localStorage.getItem('total_price');
+    this.total_price = Number(total_price);
+
+    let products = localStorage.getItem('product');
+    if (products == null) {
+      this.products = [];
+    } else {
+      this.products = JSON.parse(products);
+      console.log(this.products,"products");
+      
+    };
+  };
+
 
   getInvoice() {
     this.apiInvoice.getInvoices().subscribe((data:any) => {

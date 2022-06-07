@@ -42,6 +42,7 @@ export class CardBoxComponent implements OnInit {
     public quantityDetails!: ElementRef;
   
     constructor(
+        
         private dialog: MatDialog,
         private apiInvoice: InvoiceService,
         private apiProduct: ProductsService,
@@ -68,8 +69,6 @@ export class CardBoxComponent implements OnInit {
         console.log(result)
       });
     }
-  
-  
     
     getInvoices() {
       this.apiInvoice.getInvoices().subscribe((invoice:any) => {
@@ -84,6 +83,7 @@ export class CardBoxComponent implements OnInit {
     getProducts() {
       this.apiProduct.getProducts().subscribe((response => {
         try {
+          console.log(response,"data");
           this.showProducts = response;
           console.log(this.showProducts);
         } catch (error) {
@@ -110,15 +110,18 @@ export class CardBoxComponent implements OnInit {
         /* ------- Traigo el producto relacionado con el código que se ingresa ------- */
         this.apiProduct.getProductsByAdi(this.nameProduct).subscribe((response => { 
           try {
+
+
+            
               /*  ------- Asigno los valor que necesito del producto a la variable product ------- */
               const element = response[0];  
-              let priceProduct = Math.round((element.price * parseFloat(`${1}.${element.vat}`)));
+              let priceProduct = Math.round((element.price * parseFloat(`${1}.${element.vat}`)))
                 product = {
                 Name: this.nameProduct,
                 Price: priceProduct,
                 Code: element.code,
                 Quantity: this.quantity,
-                Vat:((element.price * parseFloat(`${0}.${element.vat}`)))
+                Vat:(element.price * parseFloat(`${0}.${element.vat}`))
               };
               this.initialValueVAT = element.vat;
               /* ------- Valida si el producto que se ingresa ya existe en los detalles y en caso de que exista suma la nueva cantidad a la cantidad que ya tenía ------- */
@@ -147,7 +150,7 @@ export class CardBoxComponent implements OnInit {
       this.invoice.details = this.products;
       /* ------- Valida que si hayan productos en los detalles para poder crear la factura ------- */ 
       if (this.products.length === 0) {
-        this.snackBar.open("Para crear la factura necesita minimo un productos");
+        this.snackBar.open("Para crear la factura necesita mínimo un producto");
       } else {
         this.apiInvoice.postInvoices(this.invoice).subscribe(response => {
           this.snackBar.open('Factura creada', '', {
@@ -157,26 +160,32 @@ export class CardBoxComponent implements OnInit {
       };
     };
   
+  
     UpdateQuantity(code: String, quantity: string, vat:number) {
-      let index = this.products.findIndex(p => p.Code === code);  // Posición del producto que se desea actualizar 
-      let newQuantity = parseInt(quantity)   // Nuevo valor que se desea ingresar 
-      
-      /* Se valida si el producto está en la lista y si su cantidad actual es mayor 
-      o igual a la que se está ingresando */
+      /* ------- Posición del producto que se desea actualizar -------*/
+      let index = this.products.findIndex(p => p.Code === code);  
+      /* ------- Nuevo valor que se ingresa ------- */
+      let newQuantity = parseInt(quantity)  
+      /* ------- Se valida si el producto está en la lista y si su cantidad actual es mayor 
+      o igual a la que se está ingresando ------- */
       if (index > -1 && this.products[index].Quantity >= newQuantity) {
-        this.products[index].Quantity = newQuantity; // Se cambia la cantidad que tiene el producto por la nueva
-        this.subtractPrices(); // Se llama a la función que se encarga de restar los valores para obtener el total de la factura
+        /* ------- Se cambia la cantidad que tiene el producto por la nueva ------- */
+        this.products[index].Quantity = newQuantity;
+        this.subtractPrices(); 
+        /* ------- Se llama a la función que se encarga de restar los valores para obtener el total de la factura ------- */
+        //this.calculateVat(vat, this.products[index].Price, newQuantity, this.products[index].Code)
       } else if (index > -1 && this.products[index].Quantity <= newQuantity) {
         this.products[index].Quantity = newQuantity;
-        this.sumPrices(); // Se llama a la función que se encarga de sumar los valores para obtener el total de la factura
+        /* ------- Se llama a la función que se encarga de sumar los valores para obtener el total de la factura ------- */
+        this.sumPrices(); 
+        //this.calculateVat(vat, this.products[index].Price, newQuantity, this.products[index].Code)
       };
     };
-  
   
     deleteProductToDetails(code: String) {
       let amountToRemove = 1;
       let index = this.products.findIndex(p => p.Code === code);
-      if (index > -1 && confirm('¿Desea eliminar el producto?')) {
+      if (index > -1 ) {
         this.products.splice(index, amountToRemove);
         this.subtractPrices();
       }
@@ -197,9 +206,23 @@ export class CardBoxComponent implements OnInit {
         object,
       ) => currentValue - (object.Price * object.Quantity) * -1, initialValue);
     };
+
+    recordLocalStorage() {
+      let products:any[] = this.products
+      localStorage.setItem("id_client", this.id_client);
+      localStorage.setItem("product", JSON.stringify(products));
+      localStorage.setItem("total_price", this.total_price.toString());
+    };
+  
+    
+    /*calculateVat(vat:number, price:number, quantity:number, code:string) {
+      let index = this.products.findIndex(p => p.Code == code);
+  
+      /* ------- Con este valor se va a hallar el precio del producto sin el IVA ------- */
+      /*let percentageToDividePrice:string = `${1}.${vat}`;
+      let productWithVAT = this.products[index].Price * parseFloat(percentageToDividePrice);
+      this.products[index].Vat = productWithVAT
   
   
-  
+    };*/
   }
-  
-  
