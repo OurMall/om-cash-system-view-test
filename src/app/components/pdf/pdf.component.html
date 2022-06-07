@@ -1,0 +1,61 @@
+<div id="htmlInvoice">
+    <div class="header">
+    <h1>FACTURA</h1>
+    <img src="../../../assets/om-logo-6.svg" alt="">
+    </div>
+    <div class="information">
+        <h3 class="name-local">Mercamos</h3>
+        <p class="p-information">Calle 50 Lindaraja</p>
+        <p class="p-information">Armenia,Quindio</p>
+    </div>
+
+    <div class="fac">
+      <div class="information2">
+        <h3 >FACTURAR A </h3>
+        <p>Pepita Perez</p>
+        <p>105484878</p>
+        <p>Fachada mz 3 #11</p>
+      </div>
+      <div class="information-fac">
+        <h3>N FACTURA</h3>
+        <h3>FECHA </h3>
+        <h3>N PEDIDO</h3>
+
+      </div>
+      <div class="details-fac">
+        <p class="p-information">5188484</p>
+        <p class="p-information">23/05/2022</p>
+        <p class="p-information">155</p>
+
+      </div>
+    </div>
+    <table class="table table-striped-columns">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">IVA</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products">
+          <td>{{item.Code}}</td>
+          <td>{{item.Name}}</td>
+          <td>{{item.Price}}</td>
+          <td>{{item.Vat}}</td>
+          <td>{{item.Quantity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+    <button class="btn-download" title="Download PDF" (click)="makePDF()"><i class="fa-solid fa-file-pdf"></i></button>
+  </div>
+
+
+
+
+
+  

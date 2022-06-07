@@ -1,0 +1,22 @@
+<ng-container *ngIf="show">
+    <div class="modalc" #modalBack>
+    <div class="modalc-content">
+        <div class="modalc-header">
+            <h4 class="modalc-title">
+                {{title}}
+            </h4>
+            <ng-template [ngTemplateOutlet]="closeIcon" ></ng-template>
+
+        </div>
+        <div class="modalc container">
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+</div>
+</ng-container>
+
+<ng-template #closeIcon>
+    <i class="fa-solid fa-x" (click)="show = false;"></i>
+</ng-template>
+

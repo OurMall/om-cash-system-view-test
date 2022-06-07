@@ -1,13 +1,16 @@
+<div id= "container" class="container">
 <div class="card">
     <h1 class="title">Registrer Product</h1>
     <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-    <input type="text"  class="input-form"  matInput [(ngModel)]="codeProduct" formControlName="Code" placeholder="Codigo del producto"  >
-    <input type="number"  class="input-form2" matInput  [(ngModel)]="quantity" formControlName="Quantity" min="0" placeholder="Cantidad">
-    <button type="submit" class="btn-pro" value="Send" >Send</button>
+   <input  type="text" placeholder="Nombre del producto"  [(ngModel)]="nameProduct" formControlName="Name" value="{{nameProduct}}" >
+    <input type="number" placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0"  >
+    <button type="submit" class="btn-pro"  value="Send" >Send</button>
     </form>
     </div>
 
-    <div class="table-wrapper">
+
+    
+    <div class="table-wrapper"> 
         <table class="fl-table">
             <thead>
             <tr>
@@ -15,20 +18,133 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
-                <th>Valor T</th>
+                <th>Subtotal</th>
+                <th>Lorem</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of products">
+              <tr *ngFor="let item of products">
                 <td>{{item.Code}}</td>
                 <td>{{item.Name}}</td>
-                <td>{{item.Price}}</td>
-                <td>{{item.Quantity}}</td>
-                <td>{{item.Price * item.Quantity}}</td>
+                <td>{{item.Price | currency}}</td>
+                <td><input type="number" value={{item.Quantity}} min="1" name="quantityDetails" #quantityDetails max="9999"></td>
+                <td>{{item.Vat * item.Quantity | currency}}</td>
+                <td>{{item.Price * item.Quantity | currency}}</td>
+                <td><button mat-raised-button color="warn" (click)="deleteProductToDetails(item.Code)">Eliminar</button></td>
+                <td><button mat-raised-button color="edit" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)">Actualizar</button></td>
             </tr>
-        </tbody>
-        </table>
+
+            </tbody>
+            </table>
+            <select class="form-select" aria-label="Default select example" #productSelect (change)="selectProduct(productSelect.value)">
+
+                <option *ngFor="let object of showProducts" [value]="object.name">{{object.name}}</option>
+              </select>
+            
     </div>
-    <div>
-        <button (click)="addInvoices()">Crear</button>
-    </div>        
+    <div class="total">
+        <h1 class="totali">Total a pagar: {{total_price | currency}}</h1>
+    </div>
+
+    <!--<button mat-raised-button (click)="openDialog()" class="btn-dialog" >Pagar</button>-->
+    <br>
+
+    <input type="checkbox" id="btn-modal">
+	<label for="btn-modal" class="lbl-modal">Pagar</label>
+	<div class="modal">
+		<div class="contenedor">
+			<label for="btn-modal" class="lbl-cerrar">X</label>
+			<div class="contenido">
+				<div class="iphone">
+            <div class="information">
+              <i class="fa-solid fa-circle-info"></i>
+        
+              <div class="content-information">
+                <div class="content-information-i">
+                  <h1>Name</h1>
+                  <p>403 Oakland Ave Street, A city, Florida, 32104,
+                  United States of America</p>
+                </div>
+                </div>
+                <div class="pay-methods">
+                  <fieldset>
+                    <legend>Payment Method</legend>
+                    <br>
+                    <section class="content-sec">
+                      <div class="app-paper">
+                        <div class="paper-title">Choose your payment method </div>
+                        <form action="" class="form-div">
+                          <!--Cash-->
+                          <input type="radio" name="methodtype" id="1" class="hidebx">
+                          <label for="1" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-cash-app.svg" alt=""></div>
+                              <div class="name-type">Cash</div>
+                            </div>
+                          </label>
+                          <!--MasterCard-->
+                          <input type="radio" name="methodtype" id="2" class="hidebx">
+                          <label for="2" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-mastercard.svg" alt=""></div>
+                              <div class="name-type">MasterCard</div>
+                            </div>
+                          </label>
+                          <!--Visa-->
+                          <input type="radio" name="methodtype" id="3" class="hidebx">
+
+                          <label for="3" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-visa.svg" alt=""></div>
+                              <div class="name-type">Visa</div>
+                            </div>
+                          </label>
+                          <!--Paypal-->
+                          <input type="radio" name="methodtype" id="4" class="hidebx">
+                          <label for="4" class="lbl-radio">
+                            <div class="display-box">
+                              <div class="logo"><img src="../../../assets/icons8-paypal.svg" alt=""></div>
+                              <div class="name-type">Paypal</div>
+                            </div>
+                          </label>
+                        </form>
+                      </div>
+
+                    </section>
+
+                  
+                <div class="details-payment">
+                    <h2 class="details-h2">Total </h2>
+                    <p class="p-details">Total price: {{total_price | currency}}</p>
+                    
+
+                </div>
+                <div id="btn-pay">
+                  <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Pay</span>
+
+
+                  </button>
+                </div>
+
+
+
+                <input type="checkbox" id="btn-modal">
+                <label for="btn-modal" class="lbl-modal">Abrir Modal</label>
+                <div class="modal">
+                  <div class="contenedor">
+                    <header>¡Bienvenidos!</header>
+                    <label for="btn-modal">X</label>
+                    <div class="contenido">
+                      <h3><!-- Agregar un titulo --></h3>
+                      <p><!-- Agregar un mensaje --></p>
+                    </div>
+                  </div>
+                </div>
+  
+    
+    
+

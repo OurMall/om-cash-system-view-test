@@ -13,7 +13,7 @@ export class ProductsService {
     private _http: HttpClient
   ) { };
 
-  getProducts(): Observable<Product> {
+  getProducts(): Observable<any> {
       return this._http.get<Product>(this.url);
   };
 
