@@ -1,3 +1,17 @@
+:root {
+
+--main-color: #0086e6;
+--main-alt-color: #0068b3;
+--dark-color: #18191b;
+--dark-alt-color: #0c0c0d;
+--light-color: #ffffff;
+--light-alt-color: #f8f7f7;
+--nord-dark-color: #2e3440;
+--nord-dark-alt-color: #3b4252;
+--nord-light-color: #d8dee9;
+--nord-light-alt-color: #e5e9f0;
+}
+
 .content {
   display: flex;
   overflow: hidden;
@@ -242,5 +256,43 @@
   display: flex;
 }
 
+.div-response {
+  padding-left: 1.5rem 5rem;
+  border-top-width: 1px;
+  display: flex;
+}
 
+.input-response {
+  width: 90%;
+}
+
+.i-respon {
+  margin-left: 40px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(243,244,246);
+  border-radius: 1.125rem;
+  border: none;
+  width: 100%;
+}
+
+.options-response {
+  justify-content: left;
+  margin-left: 85px;
+  width: 20%;
+  display: flex;
+}
+
+.icons-r {
+  cursor: pointer;
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.send-message {
+  color:rgba(255,255,255);
+  padding: 0.5rem 1rem;
+  background-color: #0086e6;
+  border-radius: 0.25rem;
+  text-decoration: inherit;
+}
 

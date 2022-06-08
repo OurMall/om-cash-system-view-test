@@ -2,6 +2,7 @@
 
 /*Full Screen*/
 .full-content {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   background-color: #2e3440;
@@ -67,7 +68,7 @@
 .card{
 	font: 95% Arial, Helvetica, sans-serif;
 	width: 400px;
-	padding: 16px; 	
+	padding: 16px;
 	background: #ffffff;
 }
 .title{
@@ -91,7 +92,7 @@
 .card input[type="time"],
 .card input[type="url"],
 .card textarea,
-.card select 
+.card select
 {
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
@@ -139,9 +140,9 @@
 	border-left-style: none;
 	border-bottom-style: none;
   font-family: 'Source Code Pro', monospace;
-  font-weight: 60;	
+  font-weight: 60;
 	color: #fff;
-    
+
 } .btn-pro[type="submit"]:hover, .btn-pro[type="button"]:hover{
 	background: #0086e691;
 	color: #0068b3;
@@ -164,11 +165,11 @@
 	overflow-x: auto;
   width: 700px;
 	height: 300px;
- 
+
 }
 
 .table-wrapper::-webkit-scrollbar {
-	width: 7px;	
+	width: 7px;
 	background: none;
 }
 
@@ -269,7 +270,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .modal{
   position: fixed;
@@ -283,7 +284,7 @@
 #btn-modal:checked ~ .modal{
   opacity: 1;
   visibility: visible;
-} 
+}
 
 .contenedor{
   font-family: 'Rubik', sans-serif;
@@ -298,7 +299,7 @@
 }
 #btn-modal:checked ~ .modal .contenedor{
   transform: translateY(0%);
-} 
+}
 .contenedor header{
   padding: 10px;
   background: #01750b;
@@ -318,7 +319,7 @@
 }
 .contenido{
   width: 100%;
-  padding: 10px; 
+  padding: 10px;
 }
 .contenido i{
   font-size: 20px;
@@ -475,7 +476,7 @@ input[type=radio]:checked +.lbl-radio{
   justify-content: center;
 }
 
-.btn-payment-modal {
+.btn-payment-modal{
   border: none;
   display: flex;
   justify-content: center;
