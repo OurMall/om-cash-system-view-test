@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 import { CardBoxComponent } from './components/card-box/card-box.component';
 import { DetailsComponent } from './components/details/details.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'pdf', component: PdfComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'details', component: DetailsComponent },
+  {path:'calculator', component: CalculatorComponent},
   { path: 'home-caja', loadChildren: () => import('./modules/home-caja/home-caja.module').then(m => m.HomeCajaModule) }
 ];
 

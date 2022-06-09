@@ -24,6 +24,8 @@
     "boxicons": "^2.1.2",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
+    "ngx-paypal": "^9.0.0",
+    "ngx-spinner": "^13.1.1",
     "pdfmake": "^0.2.5",
     "pdfmake-wrapper": "^2.1.3",
     "primeicons": "^5.0.0",

@@ -28,6 +28,10 @@ import { MmodalComponent } from './components/mmodal';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
 
+//Import
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,8 +64,9 @@ import { Template404Component } from './components/template404/template404.compo
     FormsModule, 
     ReactiveFormsModule,
     MatSliderModule,
-    MatAutocompleteModule
-
+    MatAutocompleteModule,
+    NgxPayPalModule,
+    NgxSpinnerModule
   ],
   entryComponents: [
     MyModuleComponent
