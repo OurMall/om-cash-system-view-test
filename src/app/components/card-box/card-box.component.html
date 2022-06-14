@@ -10,8 +10,8 @@
       <a href="" class="link">
         <i class="fa-solid fa-house"></i>
       </a>
-      <a href="" class="link">
-        <i class="fa-solid fa-house"></i>
+      <a class="link" routerLink="/exit">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
       </a>
     </div>
   </nav>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="content-table">
-      <div class="table-wrapper"> 
+      <div class="table-wrapper">
         <table class="fl-table">
             <thead>
             <tr>
@@ -49,15 +49,15 @@
                 <td>{{item.Vat * item.Quantity | currency}}</td>
                 <td>{{item.Price * item.Quantity | currency}}</td>
                 <td><button  class="delete-btn" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash"></i></button><button class="update-btn" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)"><i class="fa-solid fa-pen"></i></button></td>
-    
+
               </tr>
             </tbody>
-        </table>    
+        </table>
         <div class="modal-confirmation">
 
         </div>
   </div>
-  
+
 
 
   </div>
@@ -65,7 +65,7 @@
     <h2 class="details-h2">Total </h2>
     <p class="p-details">Total price: {{total_price | currency}}</p>
   </div>
-  
+
   <input type="checkbox" id="btn-modal">
 	<label for="btn-modal" class="lbl-modal">Pagar</label>
   <button mat-raised-button color="primary" (click)="recordLocalStorage()">Crear</button>
@@ -76,7 +76,7 @@
 				<div class="iphone">
             <div class="information">
               <i class="fa-solid fa-circle-info"></i>
-        
+
               <div class="content-information">
                 <div class="content-information-i">
                   <h1>Name</h1>
@@ -126,7 +126,7 @@
                             </div>
                           </label>
                         </form>
-                        
+
                       </div>
                       <div class="details-payment">
                         <h2 class="details-h2">Total </h2>
@@ -143,7 +143,7 @@
         </div>
       </div>
     </div>
-  </div>          
-</div>  
+  </div>
+</div>
 
 

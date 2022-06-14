@@ -1,6 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&family=Syne+Mono&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+
+
+.header {
+  height: 100vh;
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 10%;
+}
+
+.logo-img {
+  width: 100%;
+  
+}
+
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+  background-color: #111;
+  color:white;
+  line-height: 1;
+  padding: 3rem 0;
+}
+
+
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #fff;
+}
+
+.social-links i {
+  margin-left: 1rem;
+  transition: all 0.3s;
+  font-size: 55px;
+}
+
+.social-links .fa-github:hover,
+.social-links .fa-facebook:hover {
+  color: blue;
+  transform: rotateY(180deg);
+}
+
+.social-links .fa-instagram:hover,
+.social-links .fa-youtube:hover {
+  color: red;
+  transform: rotateY(180deg);
+}
+
+.mall-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-top: 3rem;
+
+}
+
+.first-part,
+.second-part{
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.links {
+  display:flex;
+  flex-direction: column;
+  
+}
+
+.links p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: gray;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.links a:hover {
+  color: #0086e6;
+}
+
+
+@media (max-width:1000px){
+  .mall-list {
+    flex-direction: column;
+  }
+
+  .first-part,
+  .second-part {
+    justify-content: space-between;
+    width: 70%;
+
+  }
+}
+
+@media (max-width:540px) {
+  .first-part,
+  .second-part{
+    flex-direction: column;
+  }
+
+  .links p{
+    margin-top: 2rem;
+  }
+  
 }

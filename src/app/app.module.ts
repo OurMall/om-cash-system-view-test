@@ -27,10 +27,10 @@ import { MyModuleComponent } from './components/my-module/my-module.component';
 import { MmodalComponent } from './components/mmodal';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
-
-//Import
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
+
+
 
 @NgModule({
   declarations: [
@@ -61,7 +61,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatSliderModule,
     MatAutocompleteModule,
