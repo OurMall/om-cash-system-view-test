@@ -2,7 +2,7 @@
 
 /*Full Screen*/
 .full-content {
-  overflow: hidden;
+  overflow-y: scroll;
   width: 100vw;
   height: 100vh;
   background-color: #2e3440;
@@ -164,7 +164,7 @@
 	background: none;
 	overflow-x: auto;
   width: 700px;
-	height: 300px;
+	height: 250px;
 
 }
 

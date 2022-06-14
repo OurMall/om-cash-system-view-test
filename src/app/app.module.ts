@@ -29,10 +29,10 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
-
-//Import
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
+
+
 
 @NgModule({
   declarations: [
@@ -63,8 +63,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
+<<<<<<< HEAD
     FormsModule, 
     ConfirmDialogModule,
+=======
+    FormsModule,
+>>>>>>> 47f70081f4d3625ba21e8bd65a8454b4e3b561fe
     ReactiveFormsModule,
     MatSliderModule,
     MatAutocompleteModule,
