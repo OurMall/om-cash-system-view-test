@@ -25,8 +25,14 @@ import { MatSliderModule } from '@angular/material/slider';;
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MyModuleComponent } from './components/my-module/my-module.component';
 import { MmodalComponent } from './components/mmodal';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+
 
 @NgModule({
   declarations: [
@@ -57,11 +63,17 @@ import { Template404Component } from './components/template404/template404.compo
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
+<<<<<<< HEAD
     FormsModule, 
+    ConfirmDialogModule,
+=======
+    FormsModule,
+>>>>>>> 47f70081f4d3625ba21e8bd65a8454b4e3b561fe
     ReactiveFormsModule,
     MatSliderModule,
-    MatAutocompleteModule
-
+    MatAutocompleteModule,
+    NgxPayPalModule,
+    NgxSpinnerModule
   ],
   entryComponents: [
     MyModuleComponent

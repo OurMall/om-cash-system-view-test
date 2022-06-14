@@ -10,24 +10,38 @@
       <a href="" class="link">
         <i class="fa-solid fa-house"></i>
       </a>
-      <a href="" class="link">
-        <i class="fa-solid fa-house"></i>
+      <a class="link" routerLink="/exit">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
       </a>
     </div>
   </nav>
   <div class="card-content">
     <div class="card">
       <h1 class="title">Add Product</h1>
-      <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
-      <input type="text"  class="input-form" placeholder="Nombre del producto" [(ngModel)]="nameProduct" formControlName="Name" value="{{nameProduct}}"/>
-      <input type="number"  class="input-form2"placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" />
-      <input type="submit" class="btn-pro" value="Send" />
-      </form>
-
+      <!--
+        <form [formGroup]="detailsForm" (ngSubmit)="addProductsToDetails()">
+        <input type="text"  [(ngModel)]="quantity" formControlName="Quantity">
+        <input type="number"  class="input-form2"placeholder="Cantidad"  [(ngModel)]="quantity" formControlName="Quantity" min="0" />
+        <input type="submit" class="btn-pro" value="Send" />
+        </form>
+        -->
+      
+        <form [formGroup]="formGroup" (ngSubmit)="addProductsToDetails(nameProduct.value, quantity.value)">
+          <input type="text" matInput formControlName="employee" [matAutocomplete]="auto" name="nameProduct" #nameProduct >
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let name of names" [value]="name">{{name}}</mat-option>
+          
+          
+          </mat-autocomplete>
+          <input type="text" name="quantity" #quantity placeholder="Cantidad">
+          <div>
+              <button type="submit"  class="btn-pro" >Add</button>
+          </div>
+          </form>
       </div>
     </div>
     <div class="content-table">
-      <div class="table-wrapper"> 
+      <div class="table-wrapper">
         <table class="fl-table">
             <thead>
             <tr>
@@ -49,15 +63,13 @@
                 <td>{{item.Vat * item.Quantity | currency}}</td>
                 <td>{{item.Price * item.Quantity | currency}}</td>
                 <td><button  class="delete-btn" (click)="deleteProductToDetails(item.Code)"><i class="fa-solid fa-trash"></i></button><button class="update-btn" (click)="UpdateQuantity(item.Code, quantityDetails.value, initialValueVAT)"><i class="fa-solid fa-pen"></i></button></td>
-    
+                  
               </tr>
             </tbody>
         </table>    
-        <div class="modal-confirmation">
-
-        </div>
-  </div>
   
+  </div>
+
 
 
   </div>
@@ -65,10 +77,9 @@
     <h2 class="details-h2">Total </h2>
     <p class="p-details">Total price: {{total_price | currency}}</p>
   </div>
-  
+
   <input type="checkbox" id="btn-modal">
-	<label for="btn-modal" class="lbl-modal">Pagar</label>
-  <button mat-raised-button color="primary" (click)="recordLocalStorage()">Crear</button>
+	<label for="btn-modal" class="lbl-modal" (click)="recordLocalStorage()">Pagar</label>
 	<div class="modal">
 		<div class="contenedor">
 			<label for="btn-modal" class="lbl-cerrar">X</label>
@@ -76,7 +87,7 @@
 				<div class="iphone">
             <div class="information">
               <i class="fa-solid fa-circle-info"></i>
-        
+
               <div class="content-information">
                 <div class="content-information-i">
                   <h1>Name</h1>
@@ -126,15 +137,16 @@
                             </div>
                           </label>
                         </form>
-                        
+
                       </div>
                       <div class="details-payment">
                         <h2 class="details-h2">Total </h2>
                         <p class="p-details">Total price: {{total_price | currency}}</p>
                       </div>
                       <div class="d-btn-pay">
-                      <button class="btn-payment-modal">Pagar</button>
+                      <button class="btn-payment-modal" routerLink="/calculator">Pagar</button>
                       </div>
+                      
 
                     </section>
                   </fieldset>
@@ -143,7 +155,8 @@
         </div>
       </div>
     </div>
-  </div>          
-</div>  
+  </div>
+</div>
+
 
 
