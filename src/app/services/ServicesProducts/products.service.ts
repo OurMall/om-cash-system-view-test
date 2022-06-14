@@ -17,6 +17,13 @@ export class ProductsService {
       return this._http.get<Product>(this.url);
   };
 
+  getNamesProducts():Observable<any[]> {
+    return this._http.get<[]>(this.url)
+    .pipe(
+      map((res: []) => res.map(item => item['name']))
+    )
+  }; 
+
   getProductsByAdi(id:String): Observable<any>{
     return this._http.get<Product>(`${this.url}/${id}`);
   };

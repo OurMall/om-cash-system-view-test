@@ -25,6 +25,8 @@ import { MatSliderModule } from '@angular/material/slider';;
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MyModuleComponent } from './components/my-module/my-module.component';
 import { MmodalComponent } from './components/mmodal';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { Template404Component } from './components/template404/template404.component';
 
@@ -62,6 +64,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatInputModule,
     MatSnackBarModule,
     FormsModule, 
+    ConfirmDialogModule,
     ReactiveFormsModule,
     MatSliderModule,
     MatAutocompleteModule,

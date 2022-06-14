@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { Observable } from 'rxjs/internal/Observable';
 import { enviroment } from 'src/app/models/enviroment';
 
 @Component({
@@ -12,11 +14,13 @@ export class CalculatorComponent implements OnInit {
   public payPalConfig ? : IPayPalConfig;
   public total_price:number;
   public products: any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
     this.getInvoiceStorage();
     this.initConfig();
+    
   }
 
   getInvoiceStorage() {
