@@ -79,6 +79,7 @@ export class CalculatorComponent implements OnInit {
         onClientAuthorization: (data) => {
             console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point',
             JSON.stringify(data));
+
             //this.showSuccess = true;
         },
         onCancel: (data, actions) => {

@@ -111,23 +111,8 @@
                               <div class="name-type">Cash</div>
                             </div>
                           </label>
-                          <!--MasterCard-->
-                          <input type="radio" name="methodtype" id="2" class="hidebx">
-                          <label for="2" class="lbl-radio">
-                            <div class="display-box">
-                              <div class="logo"><img src="../../../assets/icons8-mastercard.svg" alt=""></div>
-                              <div class="name-type">MasterCard</div>
-                            </div>
-                          </label>
-                          <!--Visa-->
-                          <input type="radio" name="methodtype" id="3" class="hidebx">
 
-                          <label for="3" class="lbl-radio">
-                            <div class="display-box">
-                              <div class="logo"><img src="../../../assets/icons8-visa.svg" alt=""></div>
-                              <div class="name-type">Visa</div>
-                            </div>
-                          </label>
+            
                           <!--Paypal-->
                           <input type="radio" name="methodtype" id="4" class="hidebx">
                           <label for="4" class="lbl-radio">
@@ -143,19 +128,30 @@
                         <h2 class="details-h2">Total </h2>
                         <p class="p-details">Total price: {{total_price | currency}}</p>
                       </div>
-                      <div class="d-btn-pay">
-                      <button class="btn-payment-modal" routerLink="/calculator">Pagar</button>
+                      <input type="checkbox" id="btn-modal-pay">
+                      <label for="btn-modal-pay" class="lbl-modal-pay" (click)="recordLocalStorage()">Pagar</label>
+                      <div class="modal-pay">
+                        <div class="contenedor-pay">
+                          <label for="btn-modal-pay" class="lbl-cerrar-pay">X</label>
+                          <div class="contenido-pay">
+                            <div class="iphone">
+                                <div class="information-pay">
+                                  <i class="fa-solid fa-circle-info"></i>
+                    
+                                  <div class="content-information-pay">
+                                    <div class="content-information-i">
+                                      <h1>Name</h1>
+                                      <p>403 Oakland Ave Street, A city, Florida, 32104,
+                                      United States of America</p>
+                                    </div>
+                                    </div>
+                                   
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      
-
-                    </section>
-                  </fieldset>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                  
+  
 </div>
 
 

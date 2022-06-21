@@ -63,12 +63,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
-<<<<<<< HEAD
-    FormsModule, 
-    ConfirmDialogModule,
-=======
     FormsModule,
->>>>>>> 47f70081f4d3625ba21e8bd65a8454b4e3b561fe
     ReactiveFormsModule,
     MatSliderModule,
     MatAutocompleteModule,
