@@ -114,11 +114,11 @@
 
             
                           <!--Paypal-->
-                          <input type="radio" name="methodtype" id="4" class="hidebx">
-                          <label for="4" class="lbl-radio">
-                            <div class="display-box">
-                              <div class="logo"><img src="../../../assets/icons8-paypal.svg" alt=""></div>
-                              <div class="name-type">Paypal</div>
+                          <input type="radio" name="methodtype" id="4" class="hidebx2">
+                          <label for="4" class="lbl-radio2">
+                            <div class="display-box2">
+                              <div class="logo2"><img src="../../../assets/icons8-visa.svg" alt=""></div>
+                              <div class="name-type2">Proximamente...</div>
                             </div>
                           </label>
                         </form>
@@ -129,20 +129,29 @@
                         <p class="p-details">Total price: {{total_price | currency}}</p>
                       </div>
                       <input type="checkbox" id="btn-modal-pay">
-                      <label for="btn-modal-pay" class="lbl-modal-pay" (click)="recordLocalStorage()">Pagar</label>
+                      <label for="btn-modal-pay" class="lbl-modal-pay" >Pagar</label>
                       <div class="modal-pay">
                         <div class="contenedor-pay">
                           <label for="btn-modal-pay" class="lbl-cerrar-pay">X</label>
                           <div class="contenido-pay">
                             <div class="iphone">
                                 <div class="information-pay">
-                                  <i class="fa-solid fa-circle-info"></i>
                     
                                   <div class="content-information-pay">
-                                    <div class="content-information-i">
-                                      <h1>Name</h1>
-                                      <p>403 Oakland Ave Street, A city, Florida, 32104,
-                                      United States of America</p>
+                                    <div class="content-information-i-pay">
+                                      <h1 class="h1-pay">Cash</h1>
+                                      <div class="contenido-pay">
+                                      <p class="p-details-pay">Total a pagar:     {{total_price | currency}} pesos</p>
+                                      <input type="number" class="i-cash-return" id="i-cash" placeholder="Ingresa el monto entregado por el cliente">
+                                      <div class="d-btn-calc">
+                                      <button class="btn-calc" (click)="calcash()">Calcular</button>
+                                      </div>
+                                      <p class="p-devolver">Monto a devolver: {{return}} </p>
+                                      <div class="btn-finish">
+                                      <button class="btn-pdf-pay" routerLink="/pdf">Finalizar</button>
+                                    </div>
+                                      </div>
+
                                     </div>
                                     </div>
                                    

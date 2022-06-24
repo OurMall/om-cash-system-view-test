@@ -10,6 +10,7 @@ import { Product } from 'src/app/models/product';
 import { InvoiceService } from 'src/app/services/ServicesInvoices/invoice.service';
 import { ProductsService } from 'src/app/services/ServicesProducts/products.service';
 import { MyModuleComponent } from '../my-module/my-module.component';
+import { calculateBorderBoxPath } from 'html2canvas/dist/types/render/bound-curves';
 
 @Component({
   selector: 'app-card-box',
@@ -38,6 +39,7 @@ export class CardBoxComponent implements OnInit {
   public searh!: Observable<string[]>
   public listNames!: string[]
   public names!: any[];
+  public return!: number
 
   public detailsForm = this.formBuilder.group({
     Name: ["", Validators.required],
@@ -83,6 +85,13 @@ export class CardBoxComponent implements OnInit {
       this.filterData(response);
     });
   };
+
+  calcash() {
+    const icash:any = document.getElementById("i-cash");
+    const calculo = (icash.value - this.total_price);
+    this.return = calculo;
+    console.log(calculo)
+  }
 
   
 
